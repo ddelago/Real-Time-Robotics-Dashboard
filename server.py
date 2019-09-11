@@ -1,33 +1,56 @@
 from flask import Flask, render_template
 import socket
+import threading
 app = Flask(__name__)
-
-data = ''
 
 @app.route('/')
 def hello_world():
     return render_template('index.html')                
   
+# Handle Socket Connections from Clients
+def handle_client_connection(client_socket, address):
+    print('Accepted connection from {}:{}'.format(address[0], address[1]))
+    while True:
+        # Receiving from client
+        data = client_socket.recv(1024)
+        print('{}:{} sent: {}'.format(address[0], address[1], data))
+
+        # If no data, connection was lost
+        if not data:
+            print('Connection to {}:{} lost.'.format(address[0], address[1]))
+            break
+    
+    # Close connection to client
+    client_socket.close()
+
 def initializeSocket():
     # Socket initialization
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host = '127.0.0.1'
-    port = 12345                
-    s.bind((host, port))         
+    port = 5001                
+    server.bind((host, port))         
     
-    # put the socket into listening mode 
-    s.listen()      
+    # Listen for connection to the server 
+    server.listen()      
 
-    # Establish connection with client. 
-    c, addr = s.accept()      
-    print('Got connection from', addr)
-    
-    while True: 
-        data = c.recv(1024)
+    # Create sockets to clients
+    while True:
+        # Accept connection from the client
+        client_sock, address = server.accept()
 
-    # Close the connection with the client 
-    c.close() 
+        # Each client gets their own thread
+        client_handler = threading.Thread(
+            target=handle_client_connection,
+            args=(client_sock,address,)
+        )
+
+        # Begin the client thread
+        client_handler.start()
 
 if __name__ == '__main__':
-    initializeSocket()
-    app.run(host='0.0.0.0')
+    # Creating thread for socket io
+    t1 = threading.Thread(target=initializeSocket, daemon=True) 
+    t1.start() 
+    
+    # Start webhost server
+    app.run(host='127.0.0.1')
