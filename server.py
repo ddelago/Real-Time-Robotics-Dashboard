@@ -4,7 +4,7 @@ import threading
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def entry():
     return render_template('index.html')                
   
 # Handle Socket Connections from Clients
