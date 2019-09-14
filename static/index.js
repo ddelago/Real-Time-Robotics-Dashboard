@@ -1,17 +1,18 @@
-// import { sidebar } from './sidebar.js';
-// import { view } from './view.js';
-// import { header } from './header.js';
+import { Header } from './modules/header/header.js';
+import { Sidebar } from './modules/sidebar/sidebar.js';
+import { PageContainer } from './modules/pages/pageContainer.js';
 
-var container = 
+let app = document.getElementById("app");
+
+app.innerHTML = 
 `
+${Header()}
 <div class="container-fluid">
     <div class="row">
-    helloo
     </div>
 </div>
-`
-var app = document.getElementById("app");
-app.innerHTML = container;
+`;
 
-var appRow = app.querySelector(".row");
+let appRow = app.querySelector(".row");
 
+appRow.innerHTML = Sidebar() + PageContainer();

@@ -12,14 +12,3 @@
 //     <td>adipiscing</td>
 //     <td>elit</td>
 // </tr> */}
-
-
-// function createRow(ctx, length, x, y, color) {
-    
-//     return {
-//       length: length,
-//       x: x,
-//       y: y,
-//       color: color
-//     };
-//   }
