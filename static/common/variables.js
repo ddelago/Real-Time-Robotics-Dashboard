@@ -4,12 +4,14 @@ function updateData(payload) {
     data = payload
 }
 
-function stopContentUpdate(intervalId){
-    clearInterval(intervalId);
+let activePage = ''
+function changeActivePage(page) {
+    activePage = page
 }
 
 export {
     data,
     updateData,
-    stopContentUpdate
+    activePage,
+    changeActivePage
 }

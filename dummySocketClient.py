@@ -1,6 +1,7 @@
 # Import socket module 
 import socket                
 import time
+import random
   
 # Create a socket object 
 s = socket.socket()          
@@ -13,7 +14,8 @@ s.connect(('127.0.0.1', port))
   
 # Send message to server and recieve response
 while True:
-    s.sendall(b'Hello, world')
+    message = str(random.randint(0,255))
+    s.sendall(message.encode())
     time.sleep(1)
 
 # close the connection 
