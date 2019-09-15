@@ -1,12 +1,23 @@
 from flask import Flask, render_template
+from flask_socketio import SocketIO, emit
 import socket
 import threading
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 @app.route('/')
 def entry():
-    return render_template('index.html')                
-  
+    return render_template('index.html')     
+
+@socketio.on('message')
+def handle_message(message):
+    print('received message: ', message)
+    
+@socketio.on('connect')
+def on_connect():
+    payload = dict(data='Connected')
+    emit('data', payload)
+
 # Handle Socket Connections from Clients
 def handle_client_connection(client_socket, address):
     print('Accepted connection from {}:{}'.format(address[0], address[1]))
@@ -14,6 +25,10 @@ def handle_client_connection(client_socket, address):
         # Receiving from client
         data = client_socket.recv(1024)
         print('{}:{} sent: {}'.format(address[0], address[1], data))
+        
+        # Emit to websocket client
+        payload = dict(data=data.decode("utf-8"))
+        socketio.emit('data', payload)
 
         # If no data, connection was lost
         if not data:
@@ -53,4 +68,5 @@ if __name__ == '__main__':
     t1.start() 
     
     # Start webhost server
-    app.run(host='127.0.0.1')
+    # app.run(host='127.0.0.1')
+    socketio.run(app)

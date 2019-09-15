@@ -1,6 +1,11 @@
 import { Header } from './modules/header/header.js';
 import { Sidebar } from './modules/sidebar/sidebar.js';
-import { PageContainer } from './modules/pages/pageContainer.js';
+import { PageContainer, updatePageContent } from './modules/pages/pageContainer.js';
+import { initSocket } from './common/socket.js';
+import { stopContentUpdate } from './common/variables.js'
+
+// Pass this to pages that need to update and override socket methods
+let socket = initSocket();
 
 let app = document.getElementById("app");
 
@@ -13,6 +18,8 @@ ${Header()}
 </div>
 `;
 
-let appRow = app.querySelector(".row");
+let dashboard = app.querySelector(".row");
+dashboard.innerHTML = Sidebar() + PageContainer();
 
-appRow.innerHTML = Sidebar() + PageContainer();
+// var refresh = setInterval(updatePageContent(dashboard), 1000);
+setInterval(updatePageContent(dashboard), 1000);
