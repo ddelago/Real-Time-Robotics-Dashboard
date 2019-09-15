@@ -1,4 +1,5 @@
 import { sidebarContainer, sidebarItem } from './html.js';
+import { navbarContainer } from '../header/html.js';
 export { Sidebar };
 
 function Sidebar() {
