@@ -21,19 +21,18 @@ ${Header()}
 let dashboard = app.querySelector(".row");
 dashboard.innerHTML = Sidebar() + PageContainer();
 
-// TODO: Need to fix where selector will disable old active
 // For each nav-link element, add an onClick function to change active state
 dashboard.querySelectorAll(".nav-link").forEach(function(navLink) {
     navLink.addEventListener("click", function(){
         
-        dashboard.querySelector('input[value][type="checkbox"]:not([value=""])');
+        dashboard.querySelector('a.active').classList.remove('active');
 
-        navLink.classList.add("active");
+        navLink.classList.add('active');
     });
 });
 
 // TODO: Need replace dashboard below and have way to reload DOM whenever the page is changed
-// Refresh active page content
+// Refresh active page content data
 let refreshPage = setInterval(function() {
     dashboard.querySelector(".active-page-content").innerHTML = data.data;
 
