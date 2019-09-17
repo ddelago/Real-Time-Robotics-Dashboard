@@ -4,7 +4,7 @@ function updateData(payload) {
     data = payload
 }
 
-let activePage = ''
+let activePage = 'Dashboard'
 function changeActivePage(page) {
     activePage = page
 }

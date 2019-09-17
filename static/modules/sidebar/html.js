@@ -11,24 +11,15 @@ const sidebarContainer =
 const sidebarItem = 
 `
 <li class="nav-item">
-    <a class="nav-link active" href="#">
-        <span class="icon-here"></span>
-        Dashboard
-    </a>
+    <a class="nav-link active" href="#">Dashboard</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="#">
-        Cameras
-    </a>
+    <a class="nav-link" href="#">Cameras</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="#">
-        Arm
-    </a>
+    <a class="nav-link" href="#">Arm</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="#">
-        Map
-    </a>
+    <a class="nav-link" href="#">Map</a>
 </li>
 `

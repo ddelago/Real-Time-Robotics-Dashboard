@@ -1,8 +1,8 @@
-import { pageContainer } from '../html.js/index.js';
-import { data } from '../../common/variables.js';
-export { PageContainer};
+import { pageContainer } from '../html.js';
+import { data } from '../../../common/variables.js';
+export { Arm };
 
-function PageContainer() {
+function Arm() {
     const pageContainerDom = new DOMParser().parseFromString(pageContainer, "text/html");
     pageContainerDom.querySelector(".active-page-content").innerHTML = data;
 

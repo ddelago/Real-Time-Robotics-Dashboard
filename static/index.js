@@ -21,7 +21,8 @@ ${Header()}
 let dashboard = app.querySelector(".row");
 
 // Add HTML
-dashboard.innerHTML += PageContainer() + Sidebar()
+dashboard.innerHTML += Sidebar()
+dashboard.innerHTML += PageContainer();
 
 // Add Events
 SidebarEvents(dashboard);
