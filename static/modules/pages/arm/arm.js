@@ -1,4 +1,4 @@
-import { pageContainer } from './html.js';
+import { pageContainer } from '../html.js/index.js';
 import { data } from '../../common/variables.js';
 export { PageContainer};
 

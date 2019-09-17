@@ -41,6 +41,8 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+  margin: 3px 10px;
+  border-radius: 4px;
 }
 
 .sidebar .nav-link .feather {
@@ -49,12 +51,14 @@ body {
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  color: #fff;
+  background-color: #007bff6c;
 }
 
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
+.sidebar .nav-link:hover{
+  transition-duration: 0.4s;
+  color: #333;
+  background-color: #007bff1c;
 }
 
 .sidebar-heading {
