@@ -1,10 +1,7 @@
-import { pageContainer } from './html.js';
-import { data } from '../../../common/variables.js';
+import { html } from './html.js';
+
 export { Dashboard };
 
 function Dashboard() {
-    const pageContainerDom = new DOMParser().parseFromString(pageContainer, "text/html");
-    pageContainerDom.querySelector(".active-page-content").innerHTML = data;
-
-    return pageContainerDom.body.innerHTML;
+    return html;
 }
