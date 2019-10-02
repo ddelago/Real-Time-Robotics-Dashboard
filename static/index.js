@@ -42,13 +42,19 @@ let pages = {
     "Map": Map,
 }
 
+let oldActivePage = '';
 // TODO: Need replace dashboard below and have way to reload DOM whenever the page is changed
 // Refresh active page content data
 let refreshPage = setInterval(function() {
     dashboard.querySelector(".active-page-content").innerHTML = `Incoming Message: ${data.data}`;
 
     // Updates page content based on activePage
-    dashboard.querySelector('#mainContent').innerHTML = pages[activePage]();
+    // Only update if you change pages
+    // This prevents 'changing' to the same page, updating every 100 ms
+    if (activePage != oldActivePage) {
+        dashboard.querySelector('#mainContent').innerHTML = pages[activePage]();
+    }
+    oldActivePage = activePage;
 
     // if( activePage != 'dashboard') {
     //     console.log('stopped')
