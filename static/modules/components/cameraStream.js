@@ -19,11 +19,6 @@ function newCameraStream(source, name) {
           width: 550;
           height: auto;
         }
-
-        .camera-stream:focus {
-          width: 80vw;
-          height: auto;
-        }
       </style>
     `,
 
