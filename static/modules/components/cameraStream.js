@@ -5,7 +5,7 @@ export { newCameraStream };
 // // Render this
 // body.innerHTML += stream.html();
 
-function newCameraStream(source, name) {
+function newCameraStream(name, source) {
   return {
     // stream parameters
     source: source,
@@ -19,23 +19,37 @@ function newCameraStream(source, name) {
           width: 550;
           height: auto;
         }
+
+        .full-width {
+          width: 80vw;
+        }
       </style>
     `,
 
     // Returns a string of html to be rendered
     // Stream comes wrapped in a 'col' so they'll stack nicely with bootstrap
     html: function() {
+      // Div wrapper
       let div = document.createElement('div');
       div.classList.add("col");
 
-      div.innerHTML = `
-        ${this.styles}
-        <h3>${this.name}</h3>
-        <video class="camera-stream" autoplay muted>
-          <source src="${this.source}" type="video/mp4">
-          Your browser doesn't support videos
-        </video>
-      `
+      // Video element
+      let video = document.createElement('video');
+      video.classList.add("camera-stream");
+      video.autoplay = true;
+      video.muted = true;
+
+      // Video source
+      let source = document.createElement('source');
+      source.src = this.source;
+      source.type = 'video/mp4';
+
+      let title = document.createElement('h3');
+      title.innerText = this.name;
+
+      video.innerHTML = source.outerHTML;
+      div.innerHTML = this.styles + title.outerHTML + video.outerHTML;
+
 
       return div.outerHTML;
     }

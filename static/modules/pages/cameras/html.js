@@ -4,7 +4,14 @@ import { newCameraStream } from '../../components/cameraStream.js';
 
 
 // Test data, this will be from the rover eventually i guess
-let cameras = [1, 2, 3, 4, 5];
+let cameras = [
+  (1, 'test camera 1'),
+  (2, 'test camera 2'),
+  (3, 'test camera 3'),
+  (4, 'test camera 4'),
+  (5, 'test camera 5'),
+  (6, 'test camera 6'),
+];
 
 // Returns a new div with the 'row' bootstrap class
 function newRow() {
@@ -24,7 +31,7 @@ let stream = {};
 // Containing element
 let camerasContainer = document.createElement('div');
 
-cameras.forEach(cam => {
+cameras.forEach((id, name) => {
   // add a new row every two streams so they'll stack well
   if (count % 2 == 0) {
     camerasContainer.innerHTML += newRow().outerHTML;
@@ -34,8 +41,8 @@ cameras.forEach(cam => {
 
   // Create a new stream
   // You'll get the source from the rover i'm assuming
-  // Here's i'm just using a stupid test video
-  stream = newCameraStream("/static/assets/test_video.mp4", "camera " + cam);
+  // Here i'm just using a stupid test video
+  stream = newCameraStream(name, "/static/assets/test_video.mp4");
 
   // Add the camera stream to the latest row
   camerasContainer.lastChild.innerHTML += stream.html();
