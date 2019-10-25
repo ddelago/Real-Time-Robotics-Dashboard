@@ -1,10 +1,24 @@
-import { pageContainer } from './html.js';
-import { data } from '../../../common/variables.js';
+import { html } from './html.js';
+
 export { Cameras };
 
 function Cameras() {
-    const pageContainerDom = new DOMParser().parseFromString(pageContainer, "text/html");
-    pageContainerDom.querySelector(".active-page-content").innerHTML = data;
+    // This is really bad and i don't like this
+    // Adds click listeners to the videos
+    setTimeout(() => {
+        let videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('click', vid => {
+                let cl = vid.srcElement.classList;
+                // .full-width just makes the width 80vw
+                if (!cl.contains('full-width')) {
+                    cl.add('full-width');
+                } else {
+                    cl.remove('full-width');
+                }
+            })
+        });
+    }, 100);
 
-    return pageContainerDom.body.innerHTML;
+    return html.innerHTML;
 }

@@ -1,9 +1,5 @@
 import { pageContainer } from './html.js';
 import { data, activePage } from '../../common/variables.js';
-import { Dashboard } from './dashboard/dashboard.js';
-import { Cameras } from './cameras/cameras.js';
-import { Arm } from './arm/arm.js';
-import { Map } from './map/map.js';
 export { PageContainer };
 
 function PageContainer() {
