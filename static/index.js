@@ -1,7 +1,5 @@
 import { Header } from './modules/header/header.js';
-import { Sidebar, SidebarEvents } from './modules/sidebar/sidebar.js';
-import { PageContainer } from './modules/pages/pageContainer.js';
-import { data, activePage } from './common/variables.js';
+import { data, activePage, load } from './common/variables.js';
 import { initSocket } from './common/socket.js';
 
 // Pages
@@ -13,25 +11,24 @@ import { Map } from './modules/pages/map/map.js';
 // Pass this to pages that need to update and override socket methods
 let socket = initSocket();
 
-let app = document.getElementById("app");
+// Load pages
+let sidebar = load("static/modules/sidebar/sidebar.html");
+let pageContainer = load("static/modules/pages/pageContainer/pageContainer.html");
 
-app.innerHTML =
-`
-${Header()}
-<div class="container-fluid">
-    <div class="row">
+$("#app").html(
+    `
+    ${Header()}
+    <div class="container-fluid">
+        <div class="row">
+            ${sidebar}
+            ${pageContainer}
+        </div>
     </div>
-</div>
-`;
+    `
+)
 
+let app = document.getElementById("app");
 let dashboard = app.querySelector(".row");
-
-// Add HTML
-dashboard.innerHTML += Sidebar()
-dashboard.innerHTML += PageContainer();
-
-// Add Events
-SidebarEvents(dashboard);
 
 // Key is the name of the page
 // Value is the function that returns the html of that page
@@ -43,7 +40,7 @@ let pages = {
 }
 
 let oldActivePage = '';
-// TODO: Need replace dashboard below and have way to reload DOM whenever the page is changed
+
 // Refresh active page content data
 let refreshPage = setInterval(function() {
     dashboard.querySelector(".active-page-content").innerHTML = `Incoming Message: ${data.data}`;
@@ -55,9 +52,4 @@ let refreshPage = setInterval(function() {
         dashboard.querySelector('#mainContent').innerHTML = pages[activePage]();
     }
     oldActivePage = activePage;
-
-    // if( activePage != 'dashboard') {
-    //     console.log('stopped')
-    //     clearInterval(refreshPage);
-    // }
 }, 100);

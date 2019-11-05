@@ -9,9 +9,19 @@ function changeActivePage(page) {
     activePage = page
 }
 
+function load(url)
+{
+    let req = new XMLHttpRequest();
+    req.open("GET", url, false);
+    req.send(null);
+
+    return(req.responseText); 
+}
+
 export {
     data,
     updateData,
     activePage,
-    changeActivePage
+    changeActivePage,
+    load
 }

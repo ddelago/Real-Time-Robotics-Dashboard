@@ -19,12 +19,12 @@ def on_connect():
     emit('data', payload)
 
 # Handle Socket Connections from Clients
-def handle_client_connection(client_socket, address):
+def client_handler(client_socket, address):
     print('Accepted connection from {}:{}'.format(address[0], address[1]))
     while True:
         # Receiving from client
         data = client_socket.recv(1024)
-        print('{}:{} sent: {}'.format(address[0], address[1], data))
+        # print('{}:{} sent: {}'.format(address[0], address[1], data))
 
         # Emit to websocket client
         payload = dict(data=data.decode("utf-8"))
@@ -38,13 +38,7 @@ def handle_client_connection(client_socket, address):
     # Close connection to client
     client_socket.close()
 
-def initializeSocket():
-    # Socket initialization
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = '127.0.0.1'
-    port = 5001
-    server.bind((host, port))
-
+def socket_handler(server):
     # Listen for connection to the server
     server.listen()
 
@@ -54,17 +48,23 @@ def initializeSocket():
         client_sock, address = server.accept()
 
         # Each client gets their own thread
-        client_handler = threading.Thread(
-            target=handle_client_connection,
+        client_thread = threading.Thread(
+            target=client_handler,
             args=(client_sock,address,)
         )
 
         # Begin the client thread
-        client_handler.start()
+        client_thread.start()
 
 if __name__ == '__main__':
-    # Creating thread for socket io
-    t1 = threading.Thread(target=initializeSocket, daemon=True)
+    # Socket initialization
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host = '127.0.0.1'
+    port = 5001
+    server.bind((host, port))
+
+    # Create thread for socket server
+    t1 = threading.Thread(target=socket_handler, args=(server,), daemon=True)
     t1.start()
 
     # Start webhost server
