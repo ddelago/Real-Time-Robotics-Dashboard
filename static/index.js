@@ -1,26 +1,24 @@
-import { Header } from './modules/header/header.js';
 import { data, activePage, load } from './common/variables.js';
 import { initSocket } from './common/socket.js';
 
-// Pages
-import { Dashboard } from './modules/pages/dashboard/dashboard.js';
-import { Cameras } from './modules/pages/cameras/cameras.js';
-import { Arm } from './modules/pages/arm/arm.js';
-import { Map } from './modules/pages/map/map.js';
-
-// Pass this to pages that need to update and override socket methods
+// Initialize connection
 let socket = initSocket();
 
 // Load pages
-let sidebar = load("static/modules/sidebar/sidebar.html");
+import { Cameras } from './modules/pages/cameras/cameras.js';
+let Sidebar = load("static/modules/sidebar/sidebar.html");
+let Header = load("static/modules/header/header.html")
 let pageContainer = load("static/modules/pages/pageContainer/pageContainer.html");
+let Dashboard = load("static/modules/pages/dashboard/dashboard.html")
+let Arm = load("static/modules/pages/arm/arm.html")
+let Map = load("static/modules/pages/map/map.html")
 
 $("#app").html(
     `
-    ${Header()}
+    ${Header}
     <div class="container-fluid">
         <div class="row">
-            ${sidebar}
+            ${Sidebar}
             ${pageContainer}
         </div>
     </div>
@@ -49,7 +47,7 @@ let refreshPage = setInterval(function() {
     // Only update if you change pages
     // This prevents 'changing' to the same page, updating every 100 ms
     if (activePage != oldActivePage) {
-        dashboard.querySelector('#mainContent').innerHTML = pages[activePage]();
+        dashboard.querySelector('#mainContent').innerHTML = pages[activePage];
     }
     oldActivePage = activePage;
 }, 100);
