@@ -11,6 +11,7 @@ $(document).ready(function(){
 
     // Camera stream 3
     let stream_three = $('<img />', {
+        class: "img-fluid",
         src: 'static/assets/placeholder.jpg'
     });
     $("#cam-three").html(stream_three);
