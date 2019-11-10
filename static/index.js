@@ -47,7 +47,7 @@ let refreshPage = setInterval(function() {
     // Only update if you change pages
     // This prevents 'changing' to the same page, updating every 100 ms
     if (activePage != oldActivePage) {
-        dashboard.querySelector('#mainContent').innerHTML = pages[activePage];
+        $('#mainContent').html(pages[activePage]);
     }
     oldActivePage = activePage;
 }, 100);
