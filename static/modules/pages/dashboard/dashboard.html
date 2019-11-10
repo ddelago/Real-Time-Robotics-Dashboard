@@ -1,3 +1,46 @@
-<div id='dashboard'>HTML for the 'Dashboard' page will go here</div>
+<div>
+    <div class="row camera-streams">
+        <div class="col-md-12">
+            <h4 class="text-center">Camera Streams</h4>
+            <div class="row">
+                <div class="col-md-4" id="cam-one"></div>
+                <div class="col-md-4" id="cam-two"></div>
+                <div class="col-md-4" id="cam-three"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row sensors">
+        <div class="col-md-4">
+            <h4 class="text-center">Sensor Data</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sensor</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">IMU</th>
+                        <td class="text-success">OK</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">GPS</th>
+                        <td class="text-success">OK</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Power</th>
+                        <td class="text-danger">FAILURE</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <script type="module" src="static/modules/pages/dashboard/dashboard.js"></script>
