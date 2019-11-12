@@ -48,11 +48,7 @@ let refreshPage = setInterval(function() {
     // This prevents 'changing' to the same page, updating every 100 ms
 
     if (activePage != oldActivePage) {
-        // $('#mainContent').html(pages[activePage]);
-
-        // TODO: Take this out
-        // Just for debugging, if Luke leaves this in, yell at him
-        $('#mainContent').html(pages['Cameras']);
+        $('#mainContent').html(pages[activePage]);
     }
 
     oldActivePage = activePage;

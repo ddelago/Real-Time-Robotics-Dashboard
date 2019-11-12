@@ -69,5 +69,4 @@ if __name__ == '__main__':
 
     # Start webhost server
     # app.run(host='127.0.0.1')
-    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
     socketio.run(app)
