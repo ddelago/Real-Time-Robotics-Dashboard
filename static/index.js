@@ -5,9 +5,9 @@ import { initSocket } from './common/socket.js';
 let socket = initSocket();
 
 // Load pages
-import { Cameras } from './modules/pages/cameras/cameras.js';
 let Sidebar = load("static/modules/sidebar/sidebar.html");
 let Header = load("static/modules/header/header.html")
+let Cameras = load("static/modules/pages/cameras/cameras.html");
 let pageContainer = load("static/modules/pages/pageContainer/pageContainer.html");
 let Dashboard = load("static/modules/pages/dashboard/dashboard.html")
 let Arm = load("static/modules/pages/arm/arm.html")
@@ -46,8 +46,14 @@ let refreshPage = setInterval(function() {
     // Updates page content based on activePage
     // Only update if you change pages
     // This prevents 'changing' to the same page, updating every 100 ms
+
     if (activePage != oldActivePage) {
-        $('#mainContent').html(pages[activePage]);
+        // $('#mainContent').html(pages[activePage]);
+
+        // TODO: Take this out
+        // Just for debugging, if Luke leaves this in, yell at him
+        $('#mainContent').html(pages['Cameras']);
     }
+
     oldActivePage = activePage;
 }, 100);

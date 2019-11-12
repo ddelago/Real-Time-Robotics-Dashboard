@@ -1,0 +1,9 @@
+#camerasContainer {
+  width: 100%;
+  padding: 1em;
+}
+
+video {
+  width: 30vw;
+  margin: 1em;
+}
