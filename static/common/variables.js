@@ -18,6 +18,7 @@ function load(url)
     return(req.responseText); 
 }
 
+// To avoid injected scripts error, pages have to be loaded with their hmtl and script seperate
 function loadPage(page)
 {
     var page_html = {
