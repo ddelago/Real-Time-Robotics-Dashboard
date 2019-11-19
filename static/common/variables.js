@@ -4,20 +4,6 @@ function updateData(payload) {
     data = payload
 }
 
-
-// Load pages
-let Cameras = load('static/modules/pages/cameras/cameras.js');
-let Dashboard = load("static/modules/pages/dashboard/dashboard.html")
-let Arm = load("static/modules/pages/arm/arm.html")
-let Map = load("static/modules/pages/map/map.html")
-
-let pages = {
-    "Dashboard": Dashboard,
-    "Cameras": Cameras,
-    "Arm": Arm,
-    "Map": Map
-}
-
 let activePage = 'Dashboard'
 function changeActivePage(page) {
     activePage = page
@@ -30,6 +16,35 @@ function load(url)
     req.send(null);
 
     return(req.responseText); 
+}
+
+function loadPage(page)
+{
+    var page_html = {
+        "Dashboard": "static/modules/pages/dashboard/dashboard.html",
+        "Cameras": "static/modules/pages/cameras/cameras.js",
+        "Arm": "static/modules/pages/arm/arm.html",
+        "Map": "static/modules/pages/map/map.html"
+    }
+    
+    var page_script = {
+        "Dashboard": "static/modules/pages/dashboard/dashboard.js",
+        "Cameras": "static/modules/pages/cameras/cameras.js",
+        "Arm": "static/modules/pages/arm/arm.js",
+        "Map": "static/modules/pages/map/map.js"
+    }
+
+    let html = load(page_html[page]);
+    let script = load(page_script[page]);
+
+    return(`${html}<script type='module'>${script}</script>`); 
+}
+
+let pages = {
+    "Dashboard": loadPage('Dashboard'),
+    "Cameras": loadPage('Cameras'),
+    "Arm": loadPage('Arm'),
+    "Map": loadPage('Map')
 }
 
 export {

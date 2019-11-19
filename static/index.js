@@ -21,9 +21,6 @@ $("#app").html(
     `
 )
 
-// Need to figure out a way for scripts to re-evaluate after dynamic 
-// insertion of html.
-
 // Refresh active page content data
 let dashboard = app.querySelector("#app .row");
 let refreshPage = setInterval(function() {

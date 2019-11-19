@@ -1,4 +1,4 @@
-import { activePage, pages, changeActivePage } from '../../common/variables.js';
+import { activePage, changeActivePage, pages } from '../../common/variables.js';
 
 // For each nav-link element, add an onClick function to change active state
 document.querySelectorAll(".nav-link").forEach(function(navLink) {
