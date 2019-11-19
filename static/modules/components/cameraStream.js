@@ -44,7 +44,7 @@ function newCameraStream(name, source) {
       source.src = this.source;
       source.type = 'video/mp4';
 
-      let title = document.createElement('h3');
+      let title = document.createElement('h4');
       title.innerText = this.name;
 
       video.innerHTML = source.outerHTML;
