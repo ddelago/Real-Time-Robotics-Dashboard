@@ -1,5 +1,5 @@
-import { data, load } from './common/variables.js';
-import { initSocket } from './common/socket.js';
+import { data, load } from './common/variables.mjs';
+import { initSocket } from './common/socket.mjs';
 
 // Initialize connection
 let socket = initSocket();

@@ -1,4 +1,4 @@
-import { newCameraStream } from '/static/modules/components/cameraStream.js';
+import { newCameraStream } from '/static/modules/components/cameraStream.mjs';
 
 // Camera stream 1
 let stream_one = newCameraStream('ZED', 'static/assets/test_video.mp4');

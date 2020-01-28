@@ -1,6 +1,6 @@
 export { html };
 
-import { newCameraStream } from '../../components/cameraStream.js';
+import { newCameraStream } from '../../components/cameraStream.mjs';
 
 
 // Test data, this will be from the rover eventually i guess

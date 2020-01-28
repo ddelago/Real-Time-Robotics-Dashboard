@@ -1,4 +1,4 @@
-import { updateData } from './variables.js';
+import { updateData } from './variables.mjs';
 export { initSocket };
 
 function initSocket() {

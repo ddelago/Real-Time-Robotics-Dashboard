@@ -18,21 +18,21 @@ function load(url)
     return(req.responseText); 
 }
 
-// To avoid injected scripts error, pages have to be loaded with their hmtl and script seperate
+
 function loadPage(page)
 {
     var page_html = {
         "Dashboard": "static/modules/pages/dashboard/dashboard.html",
-        "Cameras": "static/modules/pages/cameras/cameras.js",
+        "Cameras": "static/modules/pages/cameras/cameras.mjs",
         "Arm": "static/modules/pages/arm/arm.html",
         "Map": "static/modules/pages/map/map.html"
     }
     
     var page_script = {
-        "Dashboard": "static/modules/pages/dashboard/dashboard.js",
-        "Cameras": "static/modules/pages/cameras/cameras.js",
-        "Arm": "static/modules/pages/arm/arm.js",
-        "Map": "static/modules/pages/map/map.js"
+        "Dashboard": "static/modules/pages/dashboard/dashboard.mjs",
+        "Cameras": "static/modules/pages/cameras/cameras.mjs",
+        "Arm": "static/modules/pages/arm/arm.mjs",
+        "Map": "static/modules/pages/map/map.mjs"
     }
 
     let html = load(page_html[page]);
