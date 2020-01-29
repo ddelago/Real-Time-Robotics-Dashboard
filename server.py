@@ -2,8 +2,16 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 import socket
 import threading
+from controller import Controller 
 app = Flask(__name__)
 socketio = SocketIO(app)
+
+# Create thread to get input from controller
+# TODO: Handle error for when controller is not connected
+# TODO: Possibly add a socket.io method above to handle controller connection
+controller = Controller()
+controller.init_joystick()
+t2 = threading.Thread(target=controller.start, daemon=True )
 
 @app.route('/')
 def entry():
@@ -66,6 +74,7 @@ if __name__ == '__main__':
     # Create thread for socket server
     t1 = threading.Thread(target=socket_handler, args=(server,), daemon=True)
     t1.start()
+    t2.start()
 
     # Start webhost server
     # app.run(host='127.0.0.1')
