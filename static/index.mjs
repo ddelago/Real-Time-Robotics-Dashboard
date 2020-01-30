@@ -3,6 +3,7 @@ import { initSocket } from './common/socket.mjs';
 
 // Initialize connection
 let socket = initSocket();
+socket.emit('connect_controller')
 
 // Load components
 let Sidebar = load("static/modules/sidebar/sidebar.html");

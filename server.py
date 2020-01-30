@@ -6,12 +6,8 @@ from controller import Controller
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-# Create thread to get input from controller
 # TODO: Handle error for when controller is not connected
-# TODO: Possibly add a socket.io method above to handle controller connection
 controller = Controller()
-controller.init_joystick()
-t2 = threading.Thread(target=controller.start, daemon=True )
 
 @app.route('/')
 def entry():
@@ -23,7 +19,24 @@ def handle_message(message):
 
 @socketio.on('connect')
 def on_connect():
+    print("socketio has connected")
     payload = dict(data='Connected')
+    emit('data', payload)
+
+@socketio.on('connect_controller')
+def on_connect_controller():
+    # Start controller
+    controller.init_joystick()
+    controller_thread = threading.Thread(target=controller.start, daemon=True )
+    controller_thread.start()
+
+    # reply to client
+    payload = dict(data='Controller connected')
+    emit('data', payload)
+
+@socketio.on('get_controller_state')
+def on_get_controller_state():
+    payload = dict(data=controller.get_values())
     emit('data', payload)
 
 # Handle Socket Connections from Clients
@@ -74,7 +87,6 @@ if __name__ == '__main__':
     # Create thread for socket server
     t1 = threading.Thread(target=socket_handler, args=(server,), daemon=True)
     t1.start()
-    t2.start()
 
     # Start webhost server
     # app.run(host='127.0.0.1')
