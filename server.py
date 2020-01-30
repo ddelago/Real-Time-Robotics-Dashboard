@@ -7,6 +7,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 # TODO: Handle error for when controller is not connected
+# TODO: Handle case where client asks to connect controller but controller already connected
 controller = Controller()
 
 @app.route('/')

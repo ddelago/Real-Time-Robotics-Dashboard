@@ -1,5 +1,8 @@
-let data = {}
+import { initSocket } from './socket.mjs';
 
+let socket = initSocket();
+
+let data = {}
 function updateData(payload) {
     data = payload
 }
@@ -54,5 +57,6 @@ export {
     activePage,
     changeActivePage,
     load,
-    pages
+    pages,
+    socket
 }

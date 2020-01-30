@@ -1,9 +1,4 @@
-import { data, load } from './common/variables.mjs';
-import { initSocket } from './common/socket.mjs';
-
-// Initialize connection
-let socket = initSocket();
-socket.emit('connect_controller')
+import { data, load, socket } from './common/variables.mjs';
 
 // Load components
 let Sidebar = load("static/modules/sidebar/sidebar.html");
