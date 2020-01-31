@@ -1,4 +1,4 @@
-import { activePage, changeActivePage, pages } from '../../common/variables.mjs';
+import { activePage, changeActivePage, pages, socket } from '../../common/variables.mjs';
 
 // For each nav-link element, add an onClick function to change active state
 document.querySelectorAll(".nav-link").forEach(function(navLink) {
@@ -20,5 +20,7 @@ document.querySelectorAll(".nav-link").forEach(function(navLink) {
             $('#mainContent').html(pages[newPage]);
         }
         changeActivePage(newPage);
+        socket.emit('page_change', {page: newPage});
+        socket.emit('stop_controller');
     });
 });

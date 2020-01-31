@@ -1,4 +1,4 @@
-import { html } from './html.mjs';
+import { html } from '/static/modules/pages/cameras/html.mjs';
 
 export { Cameras };
 

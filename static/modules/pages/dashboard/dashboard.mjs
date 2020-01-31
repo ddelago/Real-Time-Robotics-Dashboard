@@ -20,6 +20,7 @@ $("#cam-three video").attr('width',"100%");
 $("#connect-controller").click(function(){
     socket.emit('connect_controller')
 })
+
 $("#get-controller").click(function(){
     socket.emit('get_controller_state');
-})
+}) 

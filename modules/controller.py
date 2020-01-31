@@ -5,6 +5,7 @@ class Controller:
     axis = []
     buttons = []
     hat = ()
+    get_state = True
 
     def __init__(self):
         pygame.init()
@@ -16,10 +17,11 @@ class Controller:
         self.joystick.init()
 
     def stop(self):
-        pygame.quit()
+        self.get_state = False
 
     def start(self):
-        while True:        
+        self.get_state = True
+        while self.get_state == True:        
             pygame.event.get()
             self.axis = [
                 round(self.joystick.get_axis( 0 ), 3),     
@@ -48,3 +50,6 @@ class Controller:
         
     def get_values(self):
         return(self.axis, self.buttons, self.hat)
+
+    def exit(self):
+        pygame.quit()

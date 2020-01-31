@@ -1,44 +1,9 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO, emit
 import socket
 import threading
-from controller import Controller 
-app = Flask(__name__)
-socketio = SocketIO(app)
+import modules.socketio_routes
 
-# TODO: Handle error for when controller is not connected
-# TODO: Handle case where client asks to connect controller but controller already connected
-controller = Controller()
-
-@app.route('/')
-def entry():
-    return render_template('index.html')
-
-@socketio.on('message')
-def handle_message(message):
-    print('received message: ', message)
-
-@socketio.on('connect')
-def on_connect():
-    print("socketio has connected")
-    payload = dict(data='Connected')
-    emit('data', payload)
-
-@socketio.on('connect_controller')
-def on_connect_controller():
-    # Start controller
-    controller.init_joystick()
-    controller_thread = threading.Thread(target=controller.start, daemon=True )
-    controller_thread.start()
-
-    # reply to client
-    payload = dict(data='Controller connected')
-    emit('data', payload)
-
-@socketio.on('get_controller_state')
-def on_get_controller_state():
-    payload = dict(data=controller.get_values())
-    emit('data', payload)
+app = modules.socketio_routes.app
+socketio = modules.socketio_routes.socketio
 
 # Handle Socket Connections from Clients
 def client_handler(client_socket, address):
