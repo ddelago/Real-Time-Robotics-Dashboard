@@ -6,8 +6,9 @@ import time
 
 # TODO: Handle error for when controller is not connected
 # TODO: Handle case where client asks to connect controller but controller already connected
+# TODO: Fix controller infinite loop
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
 controller = Controller()
 current_page = 'Dashboard'
@@ -30,6 +31,7 @@ def on_connect():
 def on_page_change(message):
     page = message['page']
     current_page = page
+
 @socketio.on('connect_controller')
 def on_connect_controller():
     # Start controller
@@ -43,10 +45,8 @@ def on_connect_controller():
 
 @socketio.on('get_controller_state')
 def on_get_controller_state():
-    while current_page == 'Dashboard':
-        payload = dict(data=controller.get_values())
-        emit('data', payload)
-        time.sleep(.100)
+    payload = dict(data=controller.get_values())
+    emit('data', payload)
 
 @socketio.on('stop_controller')
 def on_stop_controller():

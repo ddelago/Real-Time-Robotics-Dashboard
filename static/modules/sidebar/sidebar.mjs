@@ -21,6 +21,5 @@ document.querySelectorAll(".nav-link").forEach(function(navLink) {
         }
         changeActivePage(newPage);
         socket.emit('page_change', {page: newPage});
-        socket.emit('stop_controller');
     });
 });

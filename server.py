@@ -1,8 +1,11 @@
 import socket
 import threading
+import logging
 import modules.socketio_routes
 
 app = modules.socketio_routes.app
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 socketio = modules.socketio_routes.socketio
 
 # Handle Socket Connections from Clients
