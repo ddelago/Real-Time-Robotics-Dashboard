@@ -5,6 +5,8 @@ from modules.rover import Rover
 import threading
 import time
 
+# TODO: Fixer rover endpoints
+
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
 controller = Controller()

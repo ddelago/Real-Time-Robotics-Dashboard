@@ -1,8 +1,41 @@
 <link href="static/modules/pages/dashboard/dashboard.css" rel="stylesheet">
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="card text">
+            <div class="card-body">
+                <h5 class="card-title text-center">Connect to Rover</h5>
+                <form class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-2">
+                                <label for="rover_address">IP Address</label>
+                                <input type="text" class="form-control" id="rover_address" placeholder="192.168.1.100">
+                            </div>
+                        </div>  
+                        <div class="col-md-6">
+                            <div class="form-group mb-2">
+                                <label for="rover_ip">Port</label>
+                                <input type="password" class="form-control" id="rover_ip" placeholder="3000">
+                            </div>
+                        </div>
+                    </div>
+                </form>   
+                <button type="submit" pullRight class="btn btn-primary mb-2">Connect</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Connect Controller</h5>
+                <button type="button" class="btn btn-primary" id="connect-controller">Connect Controller</button>
+                <button type="button" class="btn btn-primary" id="get-controller">Stream Controller</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<button type="button" class="btn btn-primary" id="connect-controller">Connect Controller</button>
-<button type="button" class="btn btn-primary" id="get-controller">Get Controller Values</button>
 <div class="row mt-4">
     <div class="col-md-4">
         <h4 class="text-center">System Status</h4>
@@ -103,11 +136,9 @@
 </div>
 <div class="row mb-5">
     <div class="col-md-12">
-        <h4 class="text-center">Camera Streams</h4>
         <div class="row">
-            <div class="col-md-4" id="cam-one"></div>
-            <div class="col-md-4" id="cam-two"></div>
-            <div class="col-md-4" id="cam-three"></div>
+            <div class="col-md-6" id="cam-one"></div>
+            <div class="col-md-6" id="cam-two"></div>
         </div>
     </div>
 </div>
