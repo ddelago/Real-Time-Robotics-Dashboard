@@ -1,12 +1,10 @@
 import socket
 import threading
 import logging
-import modules.socketio_routes
+from modules.socketio_routes import app, socketio
 
-app = modules.socketio_routes.app
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
-socketio = modules.socketio_routes.socketio
 
 # Handle Socket Connections from Clients
 def client_handler(client_socket, address):
@@ -58,5 +56,4 @@ if __name__ == '__main__':
     t1.start()
 
     # Start webhost server
-    # app.run(host='127.0.0.1')
     socketio.run(app)

@@ -1,17 +1,16 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 import threading
-from modules.controller import Controller 
 import time
+from modules.controller import Controller 
 
 # TODO: Handle error for when controller is not connected
 # TODO: Handle case where client asks to connect controller but controller already connected
-# TODO: Fix controller infinite loop
+# TODO: Add more checks (is_controller_connected, etc)
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
 controller = Controller()
-current_page = 'Dashboard'
 
 @app.route('/')
 def entry():
@@ -39,15 +38,30 @@ def on_connect_controller():
     controller_thread = threading.Thread(target=controller.start, daemon=True )
     controller_thread.start()
 
+    # Begin stream
+    if(not controller.is_streaming):
+        controller.is_streaming = True
+        controller_stream = threading.Thread(target=emit_controller_state, daemon=True )
+        controller_stream.start()
+
     # reply to client
     payload = dict(data='Controller connected')
     emit('data', payload)
 
 @socketio.on('get_controller_state')
 def on_get_controller_state():
-    payload = dict(data=controller.get_values())
-    emit('data', payload)
+    controller.start_stream()
+
+@socketio.on('pause_controller_state')
+def on_pause_controller_state():
+    controller.stop_stream()
 
 @socketio.on('stop_controller')
 def on_stop_controller():
     controller.stop()
+
+def emit_controller_state():
+    while(controller.is_streaming):
+        payload = dict(data=controller.get_values())
+        socketio.emit('data', payload)
+        time.sleep(.100)

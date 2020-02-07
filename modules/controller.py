@@ -1,11 +1,15 @@
 import pygame
 import time
 
+# TODO: Format commands according to Arduino specs
+
 class Controller:
     axis = []
     buttons = []
     hat = ()
     get_state = True
+    controller_connected = False
+    is_streaming = False
 
     def __init__(self):
         pygame.init()
@@ -15,6 +19,7 @@ class Controller:
         pygame.joystick.init()
         self.joystick = pygame.joystick.Joystick(0)
         self.joystick.init()
+        self.controller_connected = True
 
     def stop(self):
         self.get_state = False
@@ -47,7 +52,13 @@ class Controller:
             # D-pad, returns a tuple (x,y)
             self.hat = self.joystick.get_hat(0)
             self.clock.tick(20)
-        
+    
+    def start_stream(self):
+        self.is_streaming = True
+    
+    def stop_stream(self):
+        self.is_streaming = False
+
     def get_values(self):
         return(self.axis, self.buttons, self.hat)
 

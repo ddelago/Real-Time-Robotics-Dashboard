@@ -1,5 +1,4 @@
 import { initSocket } from './socket.mjs';
-
 let socket = initSocket();
 
 let data = {}
@@ -10,9 +9,6 @@ function updateData(payload) {
 let activePage = 'Dashboard'
 function changeActivePage(page) {
     activePage = page
-    if(page != 'Dashboard'){
-        stopControllerLoop();
-    
 }
 
 function load(url)
@@ -54,19 +50,12 @@ let pages = {
     "Map": loadPage('Map')
 }
 
-var controllerLoop;
 function getControllerState(){
-    // If loop already running, don't start another
-    if(controllerLoop != null)
-        return 
-    controllerLoop = setInterval(function() { 
-        socket.emit('get_controller_state');
-        console.log('getting controller')
-    }, 1000);
+    socket.emit('get_controller_state');
 }
 
-function stopControllerLoop(){
-    clearTimeout(controllerLoop);
+function stopControllerState(){
+    socket.emit('pause_controller_state');
 }
 
 export {
@@ -77,5 +66,6 @@ export {
     load,
     pages,
     socket,
-    getControllerState
+    getControllerState,
+    stopControllerState
 }
