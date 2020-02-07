@@ -15,6 +15,11 @@ class Controller:
         pygame.init()
         self.clock = pygame.time.Clock()
 
+    def is_available():
+        if(pygame.joystick.get_count() > 0):
+            return True
+        return False
+
     def init_joystick(self):
         pygame.joystick.init()
         self.joystick = pygame.joystick.Joystick(0)

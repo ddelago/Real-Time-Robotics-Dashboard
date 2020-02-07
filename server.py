@@ -6,6 +6,8 @@ from modules.socketio_routes import app, socketio
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+# TODO: Remove sockets below?
+
 # Handle Socket Connections from Clients
 def client_handler(client_socket, address):
     print('Accepted connection from {}:{}'.format(address[0], address[1]))
@@ -26,7 +28,7 @@ def client_handler(client_socket, address):
     # Close connection to client
     client_socket.close()
 
-def socket_handler(server):
+def socket_listen(server):
     # Listen for connection to the server
     server.listen()
 
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     server.bind((host, port))
 
     # Create thread for socket server
-    t1 = threading.Thread(target=socket_handler, args=(server,), daemon=True)
+    t1 = threading.Thread(target=socket_listen, args=(server,), daemon=True)
     t1.start()
 
     # Start webhost server

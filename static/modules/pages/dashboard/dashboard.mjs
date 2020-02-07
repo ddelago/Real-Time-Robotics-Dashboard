@@ -21,7 +21,6 @@ $("#connect-controller").click(function(){
     socket.emit('connect_controller');
 })
 
-console.log("getting controller")
 $("#get-controller").click(function(){
     getControllerState();
 }) 

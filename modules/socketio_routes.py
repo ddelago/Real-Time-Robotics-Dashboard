@@ -1,24 +1,22 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+from modules.controller import Controller
+from modules.rover import Rover 
 import threading
 import time
-from modules.controller import Controller 
-
-# TODO: Handle error for when controller is not connected
-# TODO: Handle case where client asks to connect controller but controller already connected
-# TODO: Add more checks (is_controller_connected, etc)
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
 controller = Controller()
+rover = Rover()
 
 @app.route('/')
 def entry():
     return render_template('index.html')
 
 @socketio.on('message')
-def handle_message(message):
-    print('received message: ', message)
+def handle_message(payload):
+    print('received message: ', payload)
 
 @socketio.on('connect')
 def on_connect():
@@ -26,13 +24,18 @@ def on_connect():
     payload = dict(data='Connected')
     emit('data', payload)
 
-@socketio.on('page_change')
-def on_page_change(message):
-    page = message['page']
-    current_page = page
+@socketio.on('connect_to_rover')
+def on_connect_to_rover(payload):
+    rover.connect(payload['ip'], payload['port'])
 
 @socketio.on('connect_controller')
 def on_connect_controller():
+
+    if(not controller.is_available()):
+        payload = dict(data='Error: No controller available')
+        emit('data', payload)
+        return
+
     # Start controller
     controller.init_joystick()
     controller_thread = threading.Thread(target=controller.start, daemon=True )
