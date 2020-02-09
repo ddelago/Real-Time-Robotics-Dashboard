@@ -6,7 +6,14 @@ from modules.socketio_routes import app, socketio
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
-# TODO: Remove sockets below?
+""" 
+TODO:
+- Remove sockets below?
+- Add swal
+- Have a connected status icon in the corner of dash
+- Look at arduino packet structure
+- Look at other dashboards
+"""
 
 # Handle Socket Connections from Clients
 def client_handler(client_socket, address):

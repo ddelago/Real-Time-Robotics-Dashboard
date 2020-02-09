@@ -1,8 +1,8 @@
 <link href="static/modules/pages/dashboard/dashboard.css" rel="stylesheet">
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card text">
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-center">Connect to Rover</h5>
                 <form class="form">
@@ -21,11 +21,11 @@
                         </div>
                     </div>
                 </form>   
-                <button type="submit" pullRight class="btn btn-primary mb-2">Connect</button>
+                <button type="submit" class="btn btn-primary mb-2">Connect</button>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Connect Controller</h5>
@@ -38,107 +38,129 @@
 
 <div class="row mt-4">
     <div class="col-md-4">
-        <h4 class="text-center">System Status</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Subsystem</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Rover Server</th>
-                    <td class="text-success">OK</td>
-                </tr>
-                <tr>
-                    <th scope="row">Autonomy</th>
-                    <td class="text-danger">OFF</td>
-                </tr>
-                <tr>
-                    <th scope="row">Drive</th>
-                    <td class="text-success">OK</td>
-                </tr>
-                <tr>
-                    <th scope="row">Arm</th>
-                    <td class="text-danger">FAILURE</td>
-                </tr>
-                <tr>
-                    <th scope="row">Sample Return</th>
-                    <td class="text-success">OK</td>
-                </tr>
-                <tr>
-                    <th scope="row">Emergency Stop</th>
-                    <td class="text-success">DISENGAGED</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">System Status</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Subsystem</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Rover Server</th>
+                            <td class="text-success">OK</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Autonomy</th>
+                            <td class="text-danger">OFF</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Drive</th>
+                            <td class="text-success">OK</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Arm</th>
+                            <td class="text-danger">FAILURE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sample Return</th>
+                            <td class="text-success">OK</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Emergency Stop</th>
+                            <td class="text-success">DISENGAGED</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h4 class="text-center">Vehicle Status</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Variable</th>
-                    <th scope="col">Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Velocity</th>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Heading</th>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Break</th>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Vehicle Status</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Variable</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Velocity</th>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Heading</th>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Break</th>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>        
+        </div>
     </div>
     <div class="col-md-4">
-        <h4 class="text-center">Sensor Status</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Sensor</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">IMU</th>
-                    <td class="text-success">OK</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">GPS</th>
-                    <td class="text-success">OK</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Power</th>
-                    <td class="text-danger">FAILURE</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Comms Speed</th>
-                    <td class="text-success">OK</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Sensor Status</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sensor</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">IMU</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">GPS</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Power</th>
+                            <td class="text-danger">FAILURE</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Comms Speed</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </div>
     </div>
 </div>
-<div class="row mb-5">
+<div class="row mb-5 mt-5">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-6" id="cam-one"></div>
-            <div class="col-md-6" id="cam-two"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" id="cam-one">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body" id="cam-two">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
