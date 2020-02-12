@@ -94,6 +94,10 @@ body {
   color: #fff;
 }
 
+a.bg-dark:hover {
+  background-color: beige;
+}
+
 .navbar .form-control {
   padding: .75rem 1rem;
   border-width: 0;

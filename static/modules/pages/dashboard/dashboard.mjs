@@ -19,3 +19,9 @@ $("#connect-controller").click(function(){
 $("#get-controller").click(function(){
     getControllerState();
 }) 
+
+$("#submit-button").click(function() {
+    var ip = $("#rover_address").val();
+    var port = $("#rover_port").val();
+    socket.emit('connect_to_rover', {ip: ip, port: port});
+})

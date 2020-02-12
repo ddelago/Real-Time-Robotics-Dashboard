@@ -21,7 +21,7 @@ def client_handler(client_socket, address):
     while True:
         # Receiving from client
         data = client_socket.recv(1024)
-        # print('{}:{} sent: {}'.format(address[0], address[1], data))
+        print('{}:{} sent: {}'.format(address[0], address[1], data))
 
         # Emit to websocket client
         payload = dict(data=data.decode("utf-8"))

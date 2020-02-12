@@ -18,7 +18,8 @@ $("#app").html(
 )
 
 // Refresh active page content data
-let dashboard = app.querySelector("#app .row");
+// let dashboard = app.querySelector("#app .row");
 let refreshPage = setInterval(function() {
-    dashboard.querySelector(".active-page-content").innerHTML = `Incoming Message: ${data.data}`;
+    $(".active-page-content").html(`Incoming Message: ${data.data}`)
+    // dashboard.querySelector(".active-page-content").innerHTML = `Incoming Message: ${data.data}`;
 }, 100);

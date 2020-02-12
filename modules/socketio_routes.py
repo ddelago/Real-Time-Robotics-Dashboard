@@ -28,6 +28,7 @@ def on_connect():
 
 @socketio.on('connect_to_rover')
 def on_connect_to_rover(payload):
+    print(payload)
     rover.connect(payload['ip'], payload['port'])
 
 @socketio.on('connect_controller')
