@@ -1,4 +1,4 @@
-# Socket-and-Flask-GUI
+# Simple-Rover-Dashboard
 A simple multithreaded Flask app with Socket connections.
 
 ## Running
