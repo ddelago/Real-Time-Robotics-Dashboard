@@ -10,7 +10,7 @@ import time
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
 controller = Controller()
-rover = Rover()
+rover = Rover(socketio)
 
 @app.route('/')
 def entry():
@@ -28,7 +28,6 @@ def on_connect():
 
 @socketio.on('connect_to_rover')
 def on_connect_to_rover(payload):
-    print(payload)
     rover.connect(payload['ip'], payload['port'])
 
 @socketio.on('connect_controller')

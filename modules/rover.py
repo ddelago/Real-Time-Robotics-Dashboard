@@ -5,16 +5,22 @@ class Rover:
     connected = False
     incoming_payload = {}
 
-    def __init__(self):
+    # TODO: Always listen for messages or only on request?
+
+    def __init__(self, socketio):
         self.rover_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = True
+        self.socketio = socketio
         listener_thread = threading.Thread(target=self.listen, daemon=True)
         listener_thread.start()
 
     def connect(self, ip, port):
+        print("Connecting to rover")
         self.rover_socket.connect((ip, int(port)))
-        data = self.rover_socket.recv(1024)
-        print('Receieved reply: ', repr(data))
+        data = self.rover_socket.recv(1024).decode("utf-8")
+        print('Receieved reply: ', data)
+        self.socketio.emit('connection_status', dict(data='True')
+        
 
     def send_command(self, command, data):
         """ Send a command to the rover
@@ -53,7 +59,8 @@ class Rover:
     def get_sys_info(self):
         self.send_command('0xAB','')
         data = self.rover_socket.recv(1024).decode("utf-8")
-        print('Received system info: ', repr(data))
+        print('Received system info: ', data)
+        self.socketio.emit('system_info', dict(data=data)
 
     def listen(self):
         while True:
@@ -63,6 +70,7 @@ class Rover:
             # If no data, connection was lost
             if not data:
                 print('Connection to rover lost.')
+                self.socketio.emit('connection_status', dict(data='False')
                 self.connected = False
                 break
 
