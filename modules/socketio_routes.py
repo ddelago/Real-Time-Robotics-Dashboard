@@ -5,7 +5,7 @@ from modules.rover import Rover
 import threading
 import time
 
-# TODO: Fixer rover endpoints
+# TODO: Fixe/add rover endpoints
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)
@@ -33,7 +33,6 @@ def on_connect_to_rover(payload):
 
 @socketio.on('connect_controller')
 def on_connect_controller():
-
     if(not controller.is_available()):
         payload = dict(data='Error: No controller available')
         emit('data', payload)
