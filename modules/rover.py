@@ -1,5 +1,4 @@
 import socket
-# TODO: Need to make a way to listen to messages from rover
 
 class Rover:
     rover_socket = None
@@ -32,7 +31,7 @@ class Rover:
             f'{controller.axis[1]}' +
             f'{controller.axis[2]}' +
             f'{controller.axis[3]}' +
-            f'{controller.axis[4]}' +
+            f'{controller.axis[4]}'
         )
     
     def send_arm(self, controller):
@@ -42,7 +41,7 @@ class Rover:
             f'{controller.axis[1]}' +
             f'{controller.axis[2]}' +
             f'{controller.axis[3]}' +
-            f'{controller.axis[4]}' +
+            f'{controller.axis[4]}'
         )
     
     def send_reset(self):
