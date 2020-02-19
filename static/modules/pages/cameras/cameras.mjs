@@ -1,10 +1,6 @@
 import { html } from '/static/modules/pages/cameras/html.mjs';
 
-export { Cameras };
 
-function Cameras() {
-    // This is really bad and i don't like this
-    // Adds click listeners to the videos
     setTimeout(() => {
         let videos = document.querySelectorAll('video');
         videos.forEach(video => {
@@ -21,4 +17,3 @@ function Cameras() {
     }, 100);
 
     return html.innerHTML;
-}

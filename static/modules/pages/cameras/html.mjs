@@ -8,9 +8,6 @@ let cameras = [
   (1, 'test camera 1'),
   (2, 'test camera 2'),
   (3, 'test camera 3'),
-  (4, 'test camera 4'),
-  (5, 'test camera 5'),
-  (6, 'test camera 6'),
 ];
 
 // Returns a new div with the 'row' bootstrap class
@@ -20,16 +17,9 @@ function newRow() {
   return row;
 }
 
-// Parent element
-let html = document.createElement('div');
-
-
 // Set up the camera streams
 let count = 0;
 let stream = {};
-
-// Containing element
-let camerasContainer = document.createElement('div');
 
 cameras.forEach((id, name) => {
   // add a new row every two streams so they'll stack well
@@ -48,4 +38,3 @@ cameras.forEach((id, name) => {
   camerasContainer.lastChild.innerHTML += stream.html();
 });
 
-html.innerHTML += camerasContainer.outerHTML;

@@ -33,8 +33,7 @@ def on_connect_to_rover(payload):
 @socketio.on('connect_controller')
 def on_connect_controller():
     if(not controller.is_available()):
-        payload = dict(data='Error: No controller available')
-        emit('data', payload)
+        emit('controller_status', dict(data='False'))
         return
 
     # Start controller
@@ -49,8 +48,7 @@ def on_connect_controller():
         controller_stream.start()
 
     # reply to client
-    payload = dict(data='Controller connected')
-    emit('data', payload)
+    emit('controller_status', dict(data='True'))
 
 @socketio.on('get_controller_state')
 def on_get_controller_state():
