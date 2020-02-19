@@ -1,4 +1,5 @@
 import socket
+import threading
 
 class Rover:
     rover_socket = None
@@ -11,16 +12,20 @@ class Rover:
         self.rover_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = True
         self.socketio = socketio
-        listener_thread = threading.Thread(target=self.listen, daemon=True)
-        listener_thread.start()
 
     def connect(self, ip, port):
         print("Connecting to rover")
         self.rover_socket.connect((ip, int(port)))
-        data = self.rover_socket.recv(1024).decode("utf-8")
-        print('Receieved reply: ', data)
-        self.socketio.emit('connection_status', dict(data='True')
-        
+
+        self.send_command('0x00', '')
+        print("Connected to Rover")
+        # data = self.rover_socket.recv(1024)
+        # print('Receieved reply: ', data)
+        self.socketio.emit('connection_status', dict(data='True'))
+
+        listener_thread = threading.Thread(target=self.listen, daemon=True)
+        listener_thread.start()
+
 
     def send_command(self, command, data):
         """ Send a command to the rover
@@ -32,27 +37,27 @@ class Rover:
 
     def send_drive(self, controller):
         self.send_command(
-            'OxAA', 
+            'OxAA',
             f'{controller.axis[0]}' +
             f'{controller.axis[1]}' +
             f'{controller.axis[2]}' +
             f'{controller.axis[3]}' +
             f'{controller.axis[4]}'
         )
-    
+
     def send_arm(self, controller):
         self.send_command(
-            'OxBE', 
+            'OxBE',
             f'{controller.axis[0]}' +
             f'{controller.axis[1]}' +
             f'{controller.axis[2]}' +
             f'{controller.axis[3]}' +
             f'{controller.axis[4]}'
         )
-    
+
     def send_reset(self):
         self.send_command('0x00', '')
-    
+
     def ping(self):
         self.send_command('0xFA', '')
 
@@ -60,17 +65,18 @@ class Rover:
         self.send_command('0xAB','')
         data = self.rover_socket.recv(1024).decode("utf-8")
         print('Received system info: ', data)
-        self.socketio.emit('system_info', dict(data=data)
+        self.socketio.emit('system_info', dict(data=data))
 
     def listen(self):
         while True:
             # Receiving from rover
-            data = self.rover_socket.recv(1024).decode("utf-8")
+            data = self.rover_socket.recv(1024)
+            print(data)
 
             # If no data, connection was lost
             if not data:
                 print('Connection to rover lost.')
-                self.socketio.emit('connection_status', dict(data='False')
+                self.socketio.emit('connection_status', dict(data='False'))
                 self.connected = False
                 break
 
