@@ -1,18 +1,12 @@
 export { newCameraStream };
 
-// Example
-// let stream = newCameraStream("/some/video/source.mp4", "Camera 5");
-// // Render this
-// body.innerHTML += stream.html();
-
 function newCameraStream(name, source) {
   return {
     // stream parameters
     source: source,
     name: name,
 
-    // A string of styles. This could be included in the html method,
-    // but i like to keep it separate
+    // A string of styles. 
     styles: `
       <style>
         .camera-stream {

@@ -1,19 +1,19 @@
-import { html } from '/static/modules/pages/cameras/html.mjs';
+import { newCameraStream } from '/static/modules/components/cameraStream.mjs';
 
+let stream_one = newCameraStream('ZED', 'static/assets/test_video.mp4');
+$("#cam-one").html(stream_one.html());
+$("#cam-one video").attr('width',"100%");
 
-    setTimeout(() => {
-        let videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-            video.addEventListener('click', vid => {
-                let cl = vid.srcElement.classList;
-                // .full-width just makes the width 80vw
-                if (!cl.contains('full-width')) {
-                    cl.add('full-width');
-                } else {
-                    cl.remove('full-width');
-                }
-            })
-        });
-    }, 100);
+let stream_two = newCameraStream('Arm Cam', 'static/assets/test_video.mp4');
+$("#cam-two").html(stream_two.html());
+$("#cam-two video").attr('width',"100%");
 
-    return html.innerHTML;
+$(".video-container .card").click(function() {
+    $(".full-screen-modal").html($(this).clone());
+    $(".full-screen-modal").removeClass("hidden");
+})
+
+$(".full-screen-modal").click(function() {
+    $(this).html("");
+    $(this).addClass("hidden");
+})

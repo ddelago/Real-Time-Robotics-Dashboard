@@ -2,6 +2,10 @@ body {
   font-size: .875rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .feather {
   width: 16px;
   height: 16px;

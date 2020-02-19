@@ -25,7 +25,7 @@ function loadPage(page)
 {
     var page_html = {
         "Dashboard": "static/modules/pages/dashboard/dashboard.html",
-        "Cameras": "static/modules/pages/cameras/cameras.mjs",
+        "Cameras": "static/modules/pages/cameras/cameras.html",
         "Arm": "static/modules/pages/arm/arm.html",
         "Map": "static/modules/pages/map/map.html"
     }
