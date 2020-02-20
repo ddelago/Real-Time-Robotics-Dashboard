@@ -2,6 +2,29 @@
 
 <div class="row justify-content-center">
     <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Operator Commands</h5>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="connect-controller">Connect Controller</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="activate-led">Activate LED</button>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-2">
+                    <div class="col">
+                        <button type="button" class="btn btn-danger btn-lg btn-block" id="emergency-stop">Activate E-Stop</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="autonomy-btn">Activate Autonomy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-center">Connect to Rover</h5>
@@ -20,17 +43,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2" id="submit-button">Connect</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-2" id="submit-button">Connect</button>
                 </form>   
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Connect Controller</h5>
-                <button type="button" class="btn btn-primary" id="connect-controller">Connect Controller</button>
-                <button type="button" class="btn btn-primary" id="get-controller">Stream Controller</button>
             </div>
         </div>
     </div>

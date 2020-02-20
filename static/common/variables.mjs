@@ -51,7 +51,7 @@ let pages = {
 }
 
 function getControllerState(){
-    socket.emit('get_controller_state');
+    socket.emit('send_controller_state');
 }
 
 function stopControllerState(){

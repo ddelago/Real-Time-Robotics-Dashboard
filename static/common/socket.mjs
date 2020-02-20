@@ -13,6 +13,7 @@ function initSocket() {
     // Listen for incoming data
     socket.on('data', function(payload) {
         updateData(payload);
+        $(".active-page-content").html(`Incoming Message: ${payload.data}`)
     })
 
     return socket;

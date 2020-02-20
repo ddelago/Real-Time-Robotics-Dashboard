@@ -50,7 +50,7 @@ def on_connect_controller():
     # reply to client
     emit('controller_status', dict(data='True'))
 
-@socketio.on('get_controller_state')
+@socketio.on('send_controller_state')
 def on_get_controller_state():
     controller.start_stream()
 

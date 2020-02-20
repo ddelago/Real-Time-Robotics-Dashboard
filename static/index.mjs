@@ -16,10 +16,3 @@ $("#app").html(
     </div>
     `
 )
-
-// Refresh active page content data
-// let dashboard = app.querySelector("#app .row");
-let refreshPage = setInterval(function() {
-    $(".active-page-content").html(`Incoming Message: ${data.data}`)
-    // dashboard.querySelector(".active-page-content").innerHTML = `Incoming Message: ${data.data}`;
-}, 100);
