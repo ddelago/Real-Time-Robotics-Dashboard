@@ -1,5 +1,6 @@
 body {
   font-size: .875rem;
+  background-color: #f8f9fa;
 }
 
 .hidden {
@@ -10,6 +11,10 @@ body {
   filter: invert(1);
   height: auto;
   width: 9%;
+}
+
+.btn-block {
+  height: 100%;
 }
 
 .feather {

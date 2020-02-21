@@ -1,5 +1,5 @@
 import { newCameraStream } from '/static/modules/components/cameraStream.mjs';
-import { socket, getControllerState } from '/static/common/variables.mjs';
+import { socket, getControllerState, controllerConnected } from '/static/common/variables.mjs';
 
 // Camera stream 1
 let stream_one = newCameraStream('ZED', 'static/assets/test_video.mp4');
@@ -13,7 +13,14 @@ $("#cam-two video").attr('width',"100%");
 
 // Controller buttons
 $("#connect-controller").click(function(){
-    socket.emit('connect_controller');
+    if(controllerConnected == false){
+        socket.emit('connect_controller');
+        $(this).html("Controller On");
+        $(this).prop('disabled', true);
+
+        // Need to verify if the controller is actually connected
+        controllerConnected = true;
+    }
 })
 
 $("#get-controller").click(function(){

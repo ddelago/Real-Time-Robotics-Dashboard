@@ -2,55 +2,58 @@
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Operator Commands</h5>
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" id="connect-controller">Connect Controller</button>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" id="activate-led">Activate LED</button>
-                    </div>
-                </div>
-                <div class="row justify-content-center mt-2">
-                    <div class="col">
-                        <button type="button" class="btn btn-danger btn-lg btn-block" id="emergency-stop">Activate E-Stop</button>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" id="autonomy-btn">Activate Autonomy</button>
+        <div class="row mb-2">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Connect to Rover</h5>
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="rover_address">IP Address</label>
+                                        <input type="text" class="form-control" id="rover_address" placeholder="192.168.1.100">
+                                    </div>
+                                </div>  
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="rover_port">Port</label>
+                                        <input type="text" class="form-control" id="rover_port" placeholder="3000">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mb-2" id="submit-button">Connect</button>
+                        </form>   
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title text-center">Connect to Rover</h5>
-                <form class="form">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="rover_address">IP Address</label>
-                                <input type="text" class="form-control" id="rover_address" placeholder="192.168.1.100">
+        <div class="row">
+            <div class="col">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Operator Commands</h5>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="connect-controller">Connect Controller</button>
                             </div>
-                        </div>  
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="rover_port">Port</label>
-                                <input type="text" class="form-control" id="rover_port" placeholder="3000">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="activate-led">Activate LED</button>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-2">
+                            <div class="col">
+                                <button type="button" class="btn btn-danger btn-lg btn-block" id="emergency-stop">Activate E-Stop</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="autonomy-btn">Activate Autonomy</button>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mb-2" id="submit-button">Connect</button>
-                </form>   
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row mt-4">
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
@@ -94,26 +97,38 @@
     </div>
     <div class="col-md-4">
         <div class="card">
+            <div class="card-body" id="cam-one">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
             <div class="card-body">
                 <h4 class="card-title text-center">Vehicle Status</h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Variable</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Value</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">Velocity</th>
+                            <td class="text-success">OK</td>
                             <td>-</td>
                         </tr>
                         <tr>
                             <th scope="row">Heading</th>
+                            <td class="text-success">OK</td>
                             <td>-</td>
                         </tr>
                         <tr>
-                            <th scope="row">Break</th>
+                            <th scope="row">Brake</th>
+                            <td class="text-success">OK</td>
                             <td>-</td>
                         </tr>
                     </tbody>
@@ -159,21 +174,44 @@
             </div>    
         </div>
     </div>
-</div>
-<div class="row mb-5 mt-5">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-body" id="cam-one">
-            </div>
+            <div class="card-body">
+                <h4 class="card-title text-center">Sensor Status</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sensor</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">IMU</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">GPS</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Power</th>
+                            <td class="text-danger">FAILURE</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Comms Speed</th>
+                            <td class="text-success">OK</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body" id="cam-two">
-            </div>
-        </div>
-    </div>
 </div>
-
 <!-- This is not actually run. this causes a script injection error -->
 <!-- <script type="module" src="static/modules/pages/dashboard/dashboard.mjs"></script> -->

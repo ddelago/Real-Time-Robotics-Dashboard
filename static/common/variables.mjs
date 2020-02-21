@@ -50,6 +50,9 @@ let pages = {
     "Map": loadPage('Map')
 }
 
+
+var controllerConnected = false;
+
 function getControllerState(){
     socket.emit('send_controller_state');
 }
@@ -67,5 +70,6 @@ export {
     pages,
     socket,
     getControllerState,
-    stopControllerState
+    stopControllerState,
+    controllerConnected
 }
