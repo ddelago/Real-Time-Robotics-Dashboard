@@ -177,35 +177,25 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-center">Sensor Status</h4>
+                <h4 class="card-title text-center">Controller Status</h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Sensor</th>
+                            <th scope="col">System</th>
                             <th scope="col">Status</th>
                             <th scope="col">Value</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">IMU</th>
-                            <td class="text-success">OK</td>
-                            <td>-</td>
+                            <th scope="row">Drive</th>
+                            <td class="text-success" id="drive-status">OK</td>
+                            <td id="drive-value">-</td>
                         </tr>
                         <tr>
-                            <th scope="row">GPS</th>
-                            <td class="text-success">OK</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Power</th>
-                            <td class="text-danger">FAILURE</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Comms Speed</th>
-                            <td class="text-success">OK</td>
-                            <td>-</td>
+                            <th scope="row">Steer</th>
+                            <td class="text-success" id="steer-status">OK</td>
+                            <td id="steer-value">-</td>
                         </tr>
                     </tbody>
                 </table>

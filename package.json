@@ -5,10 +5,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "jquery": "^3.4.1",
+    "leaflet-vector-tile-layer": "^0.4.0",
     "material-design-icons": "^3.0.1",
     "socket.io": "^2.2.0"
   }

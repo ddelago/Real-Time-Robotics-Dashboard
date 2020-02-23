@@ -34,9 +34,9 @@ class Controller:
         while self.get_state == True:        
             pygame.event.get()
             self.axis = [
-                round(self.joystick.get_axis( 0 ), 3),     
+                int(self.joystick.get_axis( 0 ) * 127 + 127),     
                 round(self.joystick.get_axis( 1 ), 3),               
-                round(self.joystick.get_axis( 2 ), 3),       
+                int(self.joystick.get_axis( 2 ) * -127 + 127),       
                 round(self.joystick.get_axis( 3 ), 3),           
                 round(self.joystick.get_axis( 4 ), 3)
             ]
@@ -57,6 +57,11 @@ class Controller:
             # D-pad, returns a tuple (x,y)
             self.hat = self.joystick.get_hat(0)
             self.clock.tick(20)
+
+            if self.axis[0] > 110 and self.axis[0] < 150: 
+                self.axis[0] = 127
+            if self.axis[2] > 124 and self.axis[2] < 130: 
+                self.axis[2] = 127
     
     def start_stream(self):
         self.is_streaming = True
