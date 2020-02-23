@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\GenerteTiles\\GenerteTiles.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\GenerteTiles\\GenerteTiles.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\GenerteTiles\\GenerteTiles.csproj",
+        "projectName": "GenerteTiles",
+        "projectPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\GenerteTiles\\GenerteTiles.csproj",
+        "packagesPath": "C:\\Users\\ddela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\GenerteTiles\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ddela\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\AwesomeTiles.csproj": {
+                "projectPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\AwesomeTiles.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "AsyncEnumerator": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\AwesomeTiles.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\AwesomeTiles.csproj",
+        "projectName": "AwesomeTiles",
+        "projectPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\AwesomeTiles.csproj",
+        "packagesPath": "C:\\Users\\ddela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\tiles\\src\\AwesomeTiles\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ddela\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard1.6"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard1.6": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard1.6": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[1.6.0, )",
+              "autoReferenced": true
+            },
+            "System.Runtime.Extensions": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            }
+          },
+          "imports": [
+            "dnxcore50"
+          ]
+        }
+      }
+    }
+  }
+}

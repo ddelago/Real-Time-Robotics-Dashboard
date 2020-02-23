@@ -1,0 +1,14 @@
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.csprojAssemblyReference.cache
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.csproj.CoreCompileInputs.cache
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.AssemblyInfoInputs.cache
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.AssemblyInfo.cs
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\GenerteTiles.deps.json
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\GenerteTiles.runtimeconfig.json
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\GenerteTiles.runtimeconfig.dev.json
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\GenerteTiles.dll
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\GenerteTiles.pdb
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\AwesomeTiles.dll
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\bin\Debug\netcoreapp2.1\AwesomeTiles.pdb
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.csproj.CopyComplete
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.dll
+C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\tiles\GenerteTiles\obj\Debug\netcoreapp2.1\GenerteTiles.pdb

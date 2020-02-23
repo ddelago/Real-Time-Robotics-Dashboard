@@ -1,0 +1,6 @@
+http://a.tile.openstreetmap.org/13/1885/3306.png
+http://a.tile.openstreetmap.org/13/1886/3306.png
+http://a.tile.openstreetmap.org/13/1887/3306.png
+http://b.tile.openstreetmap.org/13/1885/3307.png
+http://b.tile.openstreetmap.org/13/1886/3307.png
+http://a.tile.openstreetmap.org/13/1887/3307.png

@@ -1,0 +1,2 @@
+http://a.tile.openstreetmap.org/12/942/1653.png
+http://b.tile.openstreetmap.org/12/943/1653.png
