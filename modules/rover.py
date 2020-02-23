@@ -9,8 +9,6 @@ class Rover:
     sending = False
     listen = False
 
-    # TODO: Always listen for messages or only on request?
-
     def __init__(self, socketio, controller):
         self.rover_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = True
@@ -37,22 +35,16 @@ class Rover:
         self.rover_socket.sendall(f'0XAA{command}{data}'.encode())
     
     def send_led_command(self, command, data):
-        payload = bytearray()
-        payload.append(0xaa)
-        payload.append(0x05)
-        payload.append(0xca)
+        payload = bytearray([0xaa, 0x05, 0xca, data])
 
         checksum = self.constructChecksum(int(command, 16), data, 0x05)
-        payload.append(data)
         payload.append(checksum)
 
-        print(payload)
         self.sending = True
         while self.sending != False:
             self.rover_socket.send(payload)
             time.sleep(.500)
 
-    # If controler is set to stream, stream
     def send_drive(self):
         payload = bytearray([0xaa, 0x06, 0xbb])
         

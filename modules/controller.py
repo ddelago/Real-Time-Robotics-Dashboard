@@ -1,8 +1,6 @@
 import pygame
 import time
 
-# TODO: Format commands according to Arduino specs
-
 class Controller:
     axis = []
     buttons = []
