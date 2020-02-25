@@ -17,6 +17,11 @@ body {
   height: 100%;
 }
 
+.camera-stream {
+  width: 100%;
+  height: auto;
+}
+
 .feather {
   width: 16px;
   height: 16px;
