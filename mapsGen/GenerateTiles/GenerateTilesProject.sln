@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateTiles", "GenerateTiles.csproj", "{AFB01DFD-3EE4-49B2-8DB9-6D58A2FBE0A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFB01DFD-3EE4-49B2-8DB9-6D58A2FBE0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB01DFD-3EE4-49B2-8DB9-6D58A2FBE0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB01DFD-3EE4-49B2-8DB9-6D58A2FBE0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB01DFD-3EE4-49B2-8DB9-6D58A2FBE0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAE4FF19-53BD-4A43-ACFA-7B7FCFE26778}
+	EndGlobalSection
+EndGlobal
