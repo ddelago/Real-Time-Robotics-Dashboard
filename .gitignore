@@ -1,5 +1,5 @@
 node_modules/
 .DS_Store
 .vscode/
-mapsGen/mapServer/tiles/*
+maps_generation/mapServer/tiles/*
 static/modules/components/maps/tiles/*
