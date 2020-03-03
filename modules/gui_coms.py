@@ -37,7 +37,7 @@ def on_connect_to_rover(payload):
 
 @socketio.on('activate_led')
 def on_activate_led(payload):
-    rover.send_led_command(payload['cmd'], payload['data'])
+    rover.send_command('led', payload['data'])
 
 @socketio.on('connect_controller')
 def on_connect_controller():
