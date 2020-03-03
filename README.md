@@ -4,7 +4,8 @@ A simple Flask/Socket.io app with a vanilla web front-end.
 ![alt text](https://github.com/ddelago/Simple-Rover-Dashboard/blob/master/media/dashboard.PNG)
 
 ## Installing
-1. `pip install -r requirements.txt`
+1. `git clone https://github.com/ddelago/Simple-Rover-Dashboard.git`
+2. `pip install -r requirements.txt`
 
 ## Running
 ### Starting the camera server
