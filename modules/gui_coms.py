@@ -33,11 +33,11 @@ def on_connect():
 
 @socketio.on('connect_to_rover')
 def on_connect_to_rover(payload):
-    rover.connect(payload['ip'], [payload['port']])
+    rover.connect(payload['ip'], payload['port'])
 
 @socketio.on('activate_led')
 def on_activate_led(payload):
-    rover.send_command('led', payload['data'])
+    rover.send_command('led', [payload['data']])
 
 @socketio.on('connect_controller')
 def on_connect_controller():
