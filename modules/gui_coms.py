@@ -7,8 +7,10 @@ import time
 
 """ 
 TODO: 
-- Catch controller/server is/not connected errors
-- Add swal
+- Catch errors when controller/server is not connected
+- Catch error when command is sent from GUI but server has not been connected yet
+    - Ignore commands until connected? Show swal 'not connected'
+- Add swal when connected to rover/etc
 - Have a connected status icon in the corner of dash
 """
 
