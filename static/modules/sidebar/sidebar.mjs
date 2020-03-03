@@ -1,6 +1,8 @@
 import { activePage, changeActivePage, pages, socket } from '../../common/variables.mjs';
 import {home, map, camera, arm} from '../../assets/icons.mjs';
+var loadedPage = ''
 
+// Add icons
 $(".home").html(home);
 $(".camera").html(camera);
 $(".arm").html(arm);
@@ -8,8 +10,10 @@ $(".map").html(map);
 
 // For each nav-link element, add an onClick function to change active state
 document.querySelectorAll(".nav-link").forEach(function(navLink) {
-    // Initialize to Dashboard
-    $('#mainContent').html(pages[activePage]);
+    if(loadedPage != activePage) {
+        $('#mainContent').html(pages[activePage]);
+        loadedPage = activePage
+    }
 
     // Change page on sidebar click
     navLink.addEventListener("click", function(e){

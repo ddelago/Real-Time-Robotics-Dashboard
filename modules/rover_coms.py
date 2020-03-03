@@ -3,9 +3,18 @@ import threading
 import time
 
 class Rover:
+    incoming_payload = {}
+    commands = {
+        'drive': (0xBB, 0x06),
+        'arm': (0xBE, 0),
+        'sr': (0xBD, 0),
+        'ping': (0xFA, 0),
+        'led': (0xCA, 0x05),
+        'sys': (0xAB, 0),
+        'reset': (0x00, 0)
+    }
     rover_socket = None
     connected = False
-    incoming_payload = {}
     sending = False
     listen = False
 
@@ -20,65 +29,34 @@ class Rover:
         print("Connecting to rover")
         self.rover_socket.connect((ip, int(port)))
 
-        # self.send_command('0x00', '')
         print("Connected to Rover")
         self.socketio.emit('connection_status', dict(data='True'))
 
+        # Start listener loop
         listener_thread = threading.Thread(target=self.listen, daemon=True)
         listener_thread.start()
 
-    def constructChecksum(self, command, data, size):
-        checksum = 0xAA ^ size ^ command ^ data
-        return checksum
-
     def send_command(self, command, data):
-        self.rover_socket.sendall(f'0XAA{command}{data}'.encode())
-    
-    def send_led_command(self, command, data):
-        payload = bytearray([0xaa, 0x05, 0xca, data])
+        # Get byte values for command
+        command = self.commands[command][0]
+        size = self.commands[command][1]
+        payload = bytearray([0xAA, size, command])
 
-        checksum = self.constructChecksum(int(command, 16), data, 0x05)
+        # Calc checksum
+        checksum = 0xAA ^ size ^ command 
+        for val in data:
+            payload.append(val)
+            checksum = checksum ^ val
+        
         payload.append(checksum)
-
-        self.sending = True
-        while self.sending != False:
-            self.rover_socket.send(payload)
-            time.sleep(.500)
+        # print(payload)
+        self.rover_socket.send(payload)
 
     def send_drive(self):
-        payload = bytearray([0xaa, 0x06, 0xbb])
-        
         while self.controller.is_streaming:
-            fwd = self.controller.axis[2]
-            steer = self.controller.axis[0]
-            checksum = 0xaa ^ 0x06 ^ 0xbb ^ fwd ^ steer
-            payload.append(fwd)
-            payload.append(steer)
-            payload.append(checksum)
-
-            self.rover_socket.send(payload)
+            # sending fwd, steer
+            self.send_command('drive', [self.controller.axis[2], self.controller.axis[0]])
             time.sleep(.500)
-
-    def send_arm(self, controller):
-        self.send_command(
-            '0xBE',
-            f'{controller.axis[0]}' +
-            f'{controller.axis[1]}' +
-            f'{controller.axis[2]}' +
-            f'{controller.axis[3]}' +
-            f'{controller.axis[4]}'
-        )
-
-    def send_reset(self):
-        self.send_command('0x00', '')
-
-    def ping(self):
-        self.send_command('0xFA', '')
-
-    def get_sys_info(self):
-        self.send_command('0xAB','')
-        # data = self.rover_socket.recv(1024).decode("utf-8")
-        # self.socketio.emit('system_info', dict(data=data))
 
     def listen(self):
         while self.listen == True:

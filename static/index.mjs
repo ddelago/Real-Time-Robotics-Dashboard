@@ -16,3 +16,6 @@ $("#app").html(
     </div>
     `
 )
+
+// Initialize to Dashboard
+$('#mainContent').html(pages['Dashboard']);

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response
 from flask_socketio import SocketIO, emit
 from modules.controller import Controller
-from modules.rover import Rover
+from modules.rover_coms import Rover
 import threading
 import time
 
@@ -45,7 +45,7 @@ def on_connect_controller():
     controller_thread = threading.Thread(target=controller.start, daemon=True )
     controller_thread.start()
 
-    # Begin stream
+    # Begin streaming controller
     if(not controller.is_streaming):
         controller.is_streaming = True
         # Stream to GUI
@@ -56,7 +56,7 @@ def on_connect_controller():
         drive_stream = threading.Thread(target=rover.send_drive, daemon=True )
         drive_stream.start()
 
-    # reply to client
+    # reply to GUI client
     emit('controller_status', dict(data='True'))
 
 @socketio.on('disconnect_from_rover')

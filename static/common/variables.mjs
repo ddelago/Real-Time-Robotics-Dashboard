@@ -11,7 +11,7 @@ function setServerConnected(val) {
     serverConnected = val;
 }
 
-let activePage = 'Dashboard'
+let activePage = 'Dashboard';
 function changeActivePage(page) {
     activePage = page
 }
