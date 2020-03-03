@@ -15,7 +15,13 @@ A simple Flask/Socket.io app with a vanilla web front-end.
 1. Open up a new terminal
 2. `python server.py`
 
-### Controller inputs
+## Interacting with the Dashboard
+- You first need to connect to the rover server in order to send commands.
+- Enter the rover IP addess and port on the main dashboard and press submit.
+- Check the server terminal to ensure there were no errors.
+- Test the connection by pressing the LED command button a few times.
+
+## Controller inputs
 Controller input using an Xbox 360 USB controller
 
 Axis
