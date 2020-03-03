@@ -5,7 +5,12 @@ from modules.rover_coms import Rover
 import threading
 import time
 
-# TODO: Fixe/add rover endpoints
+""" 
+TODO: 
+- Catch controller/server is/not connected errors
+- Add swal
+- Have a connected status icon in the corner of dash
+"""
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 socketio = SocketIO(app)

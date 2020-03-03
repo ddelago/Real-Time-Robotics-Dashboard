@@ -2,6 +2,8 @@ import socket
 import threading
 import time
 
+# TODO: Add parsing function
+
 class Rover:
     incoming_payload = {}
     commands = {
