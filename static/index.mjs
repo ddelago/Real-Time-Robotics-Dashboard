@@ -1,4 +1,4 @@
-import { data, load, socket } from './common/variables.mjs';
+import { data, load, socket, pages } from './common/variables.mjs';
 
 // Load components
 let Sidebar = load("static/modules/sidebar/sidebar.html");
