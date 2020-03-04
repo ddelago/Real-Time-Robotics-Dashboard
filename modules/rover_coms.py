@@ -45,7 +45,7 @@ class Rover:
         payload = bytearray([0xAA, size, command_byte])
 
         # Calc checksum
-        checksum = 0xAA ^ size ^ command 
+        checksum = 0xAA ^ size ^ command_byte 
         for val in data:
             payload.append(val)
             checksum = checksum ^ val
