@@ -1,5 +1,5 @@
 # Simple-Rover-Dashboard
-A simple Flask/Socket.io app with a vanilla web front-end.
+A simple Flask/Socket.io Python app with a vanilla web front-end.
 
 ![alt text](https://github.com/ddelago/Simple-Rover-Dashboard/blob/master/media/dashboard.PNG)
 
