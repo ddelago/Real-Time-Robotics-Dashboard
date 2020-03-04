@@ -11,10 +11,12 @@ A simple Flask/Socket.io Python app with a vanilla web front-end.
 ### Starting the camera server
 1. `cd camera_server`
 2. `python webstreaming.py`
+3. The camera server can now be viewed at [http://localhost:6006](http://localhost:6006).
 
 ### Starting the main server
 1. Open up a new terminal
 2. `python server.py`
+3. Navigate to [http://localhost:1337](http://localhost:1337) to view the dashboard.
 
 ## Interacting with the Dashboard
 You first need to connect to the rover server in order to send commands.
