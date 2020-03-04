@@ -40,12 +40,12 @@ class Rover:
 
     def send_command(self, command, data):
         # Get byte values for command
-        command = self.commands[command][0]
+        command_byte = self.commands[command][0]
         size = self.commands[command][1]
-        payload = bytearray([0xAA, size, command])
+        payload = bytearray([0xAA, size, command_byte])
 
         # Calc checksum
-        checksum = 0xAA ^ size ^ command 
+        checksum = 0xAA ^ size ^ command_byte 
         for val in data:
             payload.append(val)
             checksum = checksum ^ val
