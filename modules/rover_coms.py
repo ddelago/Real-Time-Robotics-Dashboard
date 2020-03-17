@@ -2,7 +2,7 @@ import socket
 import threading
 import time
 
-# TODO: Add parsing function
+# TODO: Add parsing function for incoming data
 
 class Rover:
     incoming_payload = {}
@@ -17,7 +17,6 @@ class Rover:
     }
     rover_socket = None
     connected = False
-    sending = False
     listen = False
 
     def __init__(self, socketio, controller):
@@ -28,17 +27,31 @@ class Rover:
         self.listen = True
 
     def connect(self, ip, port):
-        print("Connecting to rover")
-        self.rover_socket.connect((ip, int(port)))
-
+        print("Connecting to rover server")
+        try: 
+            self.rover_socket.connect((ip, int(port)))
+        except:
+            print("Unable to connect to Rover")
+            self.socketio.emit('error', {'message': 'Unable to connet to rover.'})
+            return
+        
+        # Successfully able to connect
+        self.connected = True
         print("Connected to Rover")
-        self.socketio.emit('connection_status', dict(data='True'))
+        self.socketio.emit('connection_status', {'staus': True})
 
         # Start listener loop
         listener_thread = threading.Thread(target=self.listen, daemon=True)
         listener_thread.start()
 
     def send_command(self, command, data):
+        """ Parses the command and constucts the byte array to be sent to the rover.
+        arguments:
+            command: the command to send as specified in the commands table above.
+            data: A list of data to be sent according to the command.
+        returns:
+            None
+        """
         # Get byte values for command
         command_byte = self.commands[command][0]
         size = self.commands[command][1]
@@ -51,24 +64,21 @@ class Rover:
             checksum = checksum ^ val
         
         payload.append(checksum)
-        # print(payload)
-        self.rover_socket.send(payload)
 
-    def send_drive(self):
-        while self.controller.is_streaming:
-            # sending fwd, steer
-            self.send_command('drive', [self.controller.axis[2], self.controller.axis[0]])
-            time.sleep(.500)
+        # Send data
+        self.rover_socket.send(payload)
 
     def listen(self):
         while self.listen == True:
             try:
                 # Receiving from rover
                 data = self.rover_socket.recv(4096)
+
+                # Skip empty messages
                 if data == b'':
                     continue
-                # print(data)
-                self.sending = False
+                else:
+                    self.parse_message(data)
             except e:
                 err = e.args[0]
                 if err == errno.EAGAIN or err == errno.EWOULDBLOCK:
@@ -83,3 +93,7 @@ class Rover:
 
         # Close connection to client
         self.rover_socket.close()
+    
+    # TODO: Parse data
+    def parse_message(self, data):
+        self.incoming_payload = data

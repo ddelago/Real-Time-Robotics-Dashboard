@@ -55,18 +55,30 @@ let pages = {
     "Map": loadPage('Map')
 }
 
-
-var controllerConnected = false;
-function setControllerStatus(val) {
-    controllerConnected = val
+function updateConnectionStatus(payload){
+    // Update connection status for rover
+    if(payload.status == true) {
+        console.log('connected to rover')
+        $("#connection-status-rover").html("Connected");
+        $("#connection-status-rover").prop('disabled', true);
+    }
+    else if(payload.status == false) {
+        console.log('Disconnected from rover')
+        $("#connection-status-rover").html("Disconnected");
+        $("#connection-status-rover").prop('disabled', false);
+    }
 }
 
-function getControllerState(){
-    socket.emit('send_controller_state');
-}
-
-function stopControllerState(){
-    socket.emit('pause_controller_state');
+function updateControllerStatus(payload){
+    // Update controller button state
+    if(payload.status == true) {
+        $("#connect-controller").html("Controller On");
+        $("#connect-controller").prop('disabled', true);
+    }
+    else if(payload.status == false) {
+        $("#connect-controller").html("Connect Controller");
+        $("#connect-controller").prop('disabled', false);
+    }
 }
 
 function updateControllerData(payload){
@@ -96,6 +108,10 @@ function updateControllerData(payload){
     }
 }
 
+function handleError(payload){
+    console.log(payload.message);
+}
+
 export {
     data,
     updateData,
@@ -104,11 +120,10 @@ export {
     load,
     pages,
     socket,
-    getControllerState,
-    stopControllerState,
-    controllerConnected,
-    setControllerStatus,
+    updateConnectionStatus,
     updateControllerData,
+    updateControllerStatus,
     serverConnected,
-    setServerConnected
+    setServerConnected,
+    handleError
 }

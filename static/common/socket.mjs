@@ -1,4 +1,4 @@
-import { updateData, updateControllerData } from './variables.mjs';
+import { updateData, updateControllerData, updateControllerStatus, updateConnectionStatus, handleError} from './variables.mjs';
 export { initSocket };
 
 function initSocket() {
@@ -16,8 +16,20 @@ function initSocket() {
         $(".active-page-content").html(`Incoming Message: ${payload.data}`)
     })
 
+    socket.on('connection_status', function(payload) {
+        updateConnectionStatus(payload);
+    })
+
+    socket.on('controller_status', function(payload) {
+        updateControllerStatus(payload);
+    })
+
     socket.on('controller_data', function(payload) {
         updateControllerData(payload);
+    })
+
+    socket.on('error', function(payload) {
+        handleError(payload);
     })
 
     return socket;

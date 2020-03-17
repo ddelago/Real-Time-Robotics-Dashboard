@@ -7,9 +7,6 @@ import time
 
 """ 
 TODO: 
-- Catch errors when controller/server is not connected
-- Catch error when command is sent from GUI but server has not been connected yet
-    - Ignore commands until connected? Show swal 'not connected'
 - Add swal when connected to rover/etc
 - Have a connected status icon in the corner of dash
 """
@@ -37,14 +34,25 @@ def on_connect():
 def on_connect_to_rover(payload):
     rover.connect(payload['ip'], payload['port'])
 
-@socketio.on('activate_led')
-def on_activate_led(payload):
-    rover.send_command('led', [payload['data']])
+@socketio.on('disconnect_from_rover')
+def on_disconnect_from_rover():
+    rover.listen = False
+    rover = None
+    controller.stop_stream()
+    controller.exit()
+
+@socketio.on('send_command')
+def on_send_command(payload):
+    if rover.connected:
+        rover.send_command(payload['command'], payload['data'])
+    else:
+        emit('error', {'message': 'Rover not connected!'})
 
 @socketio.on('connect_controller')
 def on_connect_controller():
     if(not controller.is_available()):
-        emit('controller_status', dict(data='False'))
+        print('No controller connected')
+        emit('error', {'message': 'No controller connected!'})
         return
 
     # Start controller
@@ -54,40 +62,32 @@ def on_connect_controller():
 
     # Begin streaming controller
     if(not controller.is_streaming):
-        controller.is_streaming = True
+        controller.start_stream()
+
         # Stream to GUI
-        controller_stream = threading.Thread(target=emit_controller_state, daemon=True )
-        controller_stream.start()
+        gui_stream = threading.Thread(target=stream_controller_to_gui, daemon=True )
+        gui_stream.start()
         
         # Stream to rover
-        drive_stream = threading.Thread(target=rover.send_drive, daemon=True )
-        drive_stream.start()
+        rover_stream = threading.Thread(target=stream_drive_to_rover, daemon=True )
+        rover_stream.start()
 
     # reply to GUI client
-    emit('controller_status', dict(data='True'))
+    emit('controller_status', {'status': True})
 
-@socketio.on('disconnect_from_rover')
-def on_disconnect_from_rover():
-    rover.listen = False
-    rover = None
-    controller.stop_stream()
-    controller.stop()
-    controller.exit()
-
-@socketio.on('send_controller_state')
-def on_get_controller_state():
-    controller.start_stream()
-
-@socketio.on('pause_controller_state')
-def on_pause_controller_state():
-    controller.stop_stream()
-
-@socketio.on('stop_controller')
-def on_stop_controller():
-    controller.stop()
-
-def emit_controller_state():
-    while(controller.is_streaming):
+def stream_controller_to_gui():
+    while controller.is_streaming:
         payload = dict(drive=controller.axis[2], steer=controller.axis[0])
         socketio.emit('controller_data', payload)
         time.sleep(.100)
+
+def stream_drive_to_rover():
+    while controller.is_streaming:
+        # If not connected to rover yet, wait 3 seconds then try again.
+        if not rover.connected:
+            time.sleep(3)
+            continue
+
+        # sending fwd, steer
+        rover.send_command('drive', [controller.axis[2], controller.axis[0]])
+        time.sleep(.250)

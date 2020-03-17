@@ -24,9 +24,6 @@ class Controller:
         self.joystick.init()
         self.controller_connected = True
 
-    def stop(self):
-        self.get_state = False
-
     def start(self):
         self.get_state = True
         while self.get_state == True:        
@@ -66,6 +63,7 @@ class Controller:
     
     def stop_stream(self):
         self.is_streaming = False
+        self.get_state = False
 
     def get_values(self):
         return(self.axis, self.buttons, self.hat)

@@ -1,20 +1,9 @@
-import { socket, getControllerState, controllerConnected, setControllerStatus, serverConnected, setServerConnected } from '/static/common/variables.mjs';
+import { socket, serverConnected, setServerConnected } from '/static/common/variables.mjs';
 
 // Controller buttons
 $("#connect-controller").click(function(){
-    if(controllerConnected == false){
-        socket.emit('connect_controller');
-        $(this).html("Controller On");
-        // $(this).prop('disabled', true);
-
-        // Need to verify if the controller is actually connected
-        setControllerStatus(true);
-    }
+    socket.emit('connect_controller');
 })
-
-$("#get-controller").click(function(){
-    getControllerState();
-}) 
 
 $("#submit-button").click(function() {
     if(serverConnected == false) {
@@ -38,5 +27,5 @@ $("#activate-led").click(function() {
     // red, green, blue
     var colorList = [0,1,2]
     var color = colorList[Math.floor(Math.random()*colorList.length)];
-    socket.emit('activate_led', {cmd: '0xCA', data: color});
+    socket.emit('send_command', {command: 'led', data: [color]});
 })
