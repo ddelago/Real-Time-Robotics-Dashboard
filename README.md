@@ -6,6 +6,7 @@ A simple Flask/Socket.io Python app with a vanilla web front-end.
 ## Installing
 1. `git clone https://github.com/ddelago/Simple-Rover-Dashboard.git`
 2. `pip install -r requirements.txt`
+3. Also pip install `opencv-python` and `opencv-contrib-python`
 
 ## Running
 ### Starting the camera server
