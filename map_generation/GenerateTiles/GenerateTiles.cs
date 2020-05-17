@@ -39,6 +39,12 @@ namespace GenerteTiles
             // Get the path to save the tile urls to
             string docPath = AppDomain.CurrentDomain.BaseDirectory;
             string path = $"../../../tile-urls/tiles-{zoom}.txt";
+            
+            // Check if directory exists
+            if (!Directory.Exists("../../../tile-urls"))
+            {
+                Directory.CreateDirectory("../../../tile-urls");
+            }
 
             // Save the urls to file
             if (!File.Exists(path))
