@@ -11,7 +11,7 @@ A simple Flask/Socket.io Python app with a vanilla web front-end.
 ### Starting the camera server
 1. `cd camera_server`
 2. Make sure you have a `CameraCalibration.pckl` file. 
-    - [See here on how to properly create one.](https://github.com/ddelago/Aruco-Marker-Calibration-and-Pose-Estimation) for more information on how to properly calibrate your camera.)
+    - [See here on how to properly create one.](https://github.com/ddelago/Aruco-Marker-Calibration-and-Pose-Estimation)
 3. `python webstreaming.py`
 4. The camera server can now be viewed at [http://localhost:6006](http://localhost:6006).
     - Ensure that a webcam is connected and that the correct camera is being sourced (line 20).
