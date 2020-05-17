@@ -806,11 +806,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\GenerateTiles\\GenerateTiles.csproj",
+      "projectUniqueName": "C:\\Users\\ddela\\Desktop\\Projects\\Web-Based-Robotics-Dashboard\\map_generation\\GenerateTiles\\GenerateTiles.csproj",
       "projectName": "GenerateTiles",
-      "projectPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\GenerateTiles\\GenerateTiles.csproj",
+      "projectPath": "C:\\Users\\ddela\\Desktop\\Projects\\Web-Based-Robotics-Dashboard\\map_generation\\GenerateTiles\\GenerateTiles.csproj",
       "packagesPath": "C:\\Users\\ddela\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ddela\\Desktop\\Projects\\RoverGUI\\Simple-Rover-Dashboard\\maps\\GenerateTiles\\obj\\",
+      "outputPath": "C:\\Users\\ddela\\Desktop\\Projects\\Web-Based-Robotics-Dashboard\\map_generation\\GenerateTiles\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

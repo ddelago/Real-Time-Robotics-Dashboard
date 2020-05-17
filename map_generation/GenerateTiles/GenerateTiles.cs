@@ -11,10 +11,10 @@ namespace GenerteTiles
 
         public TileRange calcTileRange(double bottom, double left, double top, double right, int zoom)
         {
+            // Convert coords to valid tile indexes
             var leftBottom = Tile.CreateAroundLocation(bottom, left, zoom);
             var topRight = Tile.CreateAroundLocation(top, right, zoom);
 
-            //dirty, but obvious :)
             var minX = Math.Min(leftBottom.X, topRight.X);
             var maxX = Math.Max(leftBottom.X, topRight.X);
 
@@ -28,6 +28,7 @@ namespace GenerteTiles
 
         public void getTiles(TileRange range, int zoom)
         {
+            // Request the map tile urls from the osm server of a specific zoom level. 
             var random = new Random();
             string text = "";
             foreach (var tile in range)
@@ -35,15 +36,27 @@ namespace GenerteTiles
                 text += $"http://{_serverEndpoints[random.Next(0, 2)]}.tile.openstreetmap.org/{zoom}/{tile.X}/{tile.Y}.png\n";
             }
 
+            // Get the path to save the tile urls to
             string docPath = AppDomain.CurrentDomain.BaseDirectory;
-            File.WriteAllText($"../../../tile-urls/tiles-{zoom}.txt", text);
+            string path = $"../../../tile-urls/tiles-{zoom}.txt";
+
+            // Save the urls to file
+            if (!File.Exists(path))
+            {
+                File.Create(path).Dispose();
+                File.WriteAllText(path, text);
+            }
+            else if (File.Exists(path))
+            {
+                File.WriteAllText(path, text);
+            }
         }
 
         static public void Main(String[] args)
         {
             var genTiles = new GenerateTiles();
 
-            for(var zoom = 19; zoom <= 20; zoom++)
+            for(var zoom = 0; zoom <= 19; zoom++)
             {
                 //UTA
                 var tileRange = genTiles.calcTileRange(32.7, -97.16, 32.75, -97.06, zoom);

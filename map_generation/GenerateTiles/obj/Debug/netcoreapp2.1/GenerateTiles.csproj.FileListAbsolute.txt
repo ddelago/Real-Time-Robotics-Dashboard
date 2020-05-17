@@ -9,3 +9,14 @@ C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\GenerateTil
 C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.pdb
 C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.dll
 C:\Users\ddela\Desktop\Projects\RoverGUI\Simple-Rover-Dashboard\maps\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.pdb
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.csprojAssemblyReference.cache
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.csproj.CoreCompileInputs.cache
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.AssemblyInfoInputs.cache
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.AssemblyInfo.cs
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.dll
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\obj\Debug\netcoreapp2.1\GenerateTiles.pdb
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.deps.json
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.runtimeconfig.json
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.runtimeconfig.dev.json
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.dll
+C:\Users\ddela\Desktop\Projects\Web-Based-Robotics-Dashboard\map_generation\GenerateTiles\bin\Debug\netcoreapp2.1\GenerateTiles.pdb
