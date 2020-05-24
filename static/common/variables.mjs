@@ -16,6 +16,7 @@ function changeActivePage(page) {
     activePage = page
 }
 
+// Load a raw html page and return its contents
 function load(url)
 {
     let req = new XMLHttpRequest();
@@ -26,6 +27,7 @@ function load(url)
 }
 
 // To avoid injected scripts error, dynamic pages have to be loaded with their hmtl and script seperate
+// This loads the contents of html and script files and manually recombines them.
 function loadPage(page)
 {
     var page_html = {
@@ -48,6 +50,7 @@ function loadPage(page)
     return(`${html}<script type='module'>${script}</script>`); 
 }
 
+// Each value contains all of the contents of that tab.
 let pages = {
     "Dashboard": loadPage('Dashboard'),
     "Cameras": loadPage('Cameras'),
@@ -55,6 +58,7 @@ let pages = {
     "Map": loadPage('Map')
 }
 
+// This will update the connection status button on the dashboard tab.
 function updateConnectionStatus(payload){
     // Update connection status for rover
     if(payload.status == true) {
@@ -69,6 +73,7 @@ function updateConnectionStatus(payload){
     }
 }
 
+// This will update the controller status button on the dashboard tab.
 function updateControllerStatus(payload){
     // Update controller button state
     if(payload.status == true) {
@@ -81,6 +86,7 @@ function updateControllerStatus(payload){
     }
 }
 
+// Receive the controller state from the server and update the values on the GUI
 function updateControllerData(payload){
     var drive = payload.drive > 124 && payload.drive < 130? 127 : payload.drive;
     var steer = payload.steer > 110 && payload.steer < 150? 127 : payload.steer;
@@ -108,10 +114,14 @@ function updateControllerData(payload){
     }
 }
 
+// If an error occurs on the server, handle it here.
+// In the future, having a pop-up with the error message would be useful.
 function handleError(payload){
     console.log(payload.message);
 }
 
+// Export all of the functions and variables so that they 
+// are callable from other scripts. 
 export {
     data,
     updateData,

@@ -10,7 +10,7 @@ function initSocket() {
         console.log("Connected to server")
     });
 
-    // Listen for incoming data
+    // Listen for incoming data then display
     socket.on('data', function(payload) {
         updateData(payload);
         $(".active-page-content").html(`Incoming Message: ${payload.data}`)

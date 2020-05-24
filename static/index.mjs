@@ -1,10 +1,13 @@
-import { data, load, socket, pages } from './common/variables.mjs';
+import { load, pages } from './common/variables.mjs';
 
 // Load components
 let Sidebar = load("static/modules/sidebar/sidebar.html");
 let Header = load("static/modules/header/header.html")
+
+// Page container is just a wrapper for the actual page content.
 let pageContainer = load("static/modules/pages/pageContainer/pageContainer.html");
 
+// Insert them into the dashboard
 $("#app").html(
     `
     ${Header}
@@ -17,5 +20,5 @@ $("#app").html(
     `
 )
 
-// Initialize to Dashboard
+// Show the main dashboard tab
 $('#mainContent').html(pages['Dashboard']);

@@ -1,12 +1,12 @@
 import pygame
-import time
 
 class Controller:
+    """
+    Connect and stream the values of a controller.
+    """
     axis = []
     buttons = []
     hat = ()
-    get_state = True
-    controller_connected = False
     is_streaming = False
 
     def __init__(self):
@@ -14,28 +14,36 @@ class Controller:
         self.clock = pygame.time.Clock()
 
     def is_available(self):
-        if(pygame.joystick.get_count() > 0):
+        """
+        Check if a controller is connected.
+        """
+        if pygame.joystick.get_count() > 0:
             return True
         return False
 
     def init_joystick(self):
+        """
+        Initialize the controller.
+        """
         pygame.joystick.init()
         self.joystick = pygame.joystick.Joystick(0)
         self.joystick.init()
         self.controller_connected = True
 
     def start(self):
-        self.get_state = True
-        while self.get_state == True:        
+        """
+        Stream and update the controller values.
+        """
+        while self.is_streaming:
             pygame.event.get()
             self.axis = [
-                int(self.joystick.get_axis( 0 ) * 127 + 127),     
-                round(self.joystick.get_axis( 1 ), 3),               
-                int(self.joystick.get_axis( 2 ) * -127 + 127),       
-                round(self.joystick.get_axis( 3 ), 3),           
-                round(self.joystick.get_axis( 4 ), 3)
+                int(self.joystick.get_axis(0) * 127 + 127),
+                round(self.joystick.get_axis(1), 3),
+                int(self.joystick.get_axis(2) * -127 + 127),
+                round(self.joystick.get_axis(3), 3),
+                round(self.joystick.get_axis(4), 3)
             ]
-            
+
             self.buttons = [
                 self.joystick.get_button(0),
                 self.joystick.get_button(1),
@@ -53,19 +61,28 @@ class Controller:
             self.hat = self.joystick.get_hat(0)
             self.clock.tick(20)
 
-            if self.axis[0] > 110 and self.axis[0] < 150: 
+            # Add a deadzone
+            if self.axis[0] > 110 and self.axis[0] < 150:
                 self.axis[0] = 127
-            if self.axis[2] > 124 and self.axis[2] < 130: 
+            if self.axis[2] > 124 and self.axis[2] < 130:
                 self.axis[2] = 127
-    
+
     def start_stream(self):
+        """
+        Begin streaming the controller.
+        """
         self.is_streaming = True
-    
+
     def stop_stream(self):
+        """
+        Stop streaming the controller values
+        """
         self.is_streaming = False
-        self.get_state = False
 
     def get_values(self):
+        """
+        Return the current values of the controller
+        """
         return(self.axis, self.buttons, self.hat)
 
     def exit(self):

@@ -5,6 +5,7 @@ $("#connect-controller").click(function(){
     socket.emit('connect_controller');
 })
 
+// Get the form values and send it to the server.
 $("#submit-button").click(function() {
     if(serverConnected == false) {
         var ip = $("#rover_address").val();
@@ -23,6 +24,7 @@ $("#submit-button").click(function() {
     }
 })
 
+// Select a random color and send to server.
 $("#activate-led").click(function() {
     // red, green, blue
     var colorList = [0,1,2]

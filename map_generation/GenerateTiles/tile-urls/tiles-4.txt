@@ -1,1 +1,1 @@
-http://a.tile.openstreetmap.org/4/3/6.png
+http://b.tile.openstreetmap.org/4/3/6.png
