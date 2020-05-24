@@ -1,17 +1,20 @@
-# Simple-Rover-Dashboard
-A simple Flask/Socket.io Python app with a vanilla web front-end.
+# Real-Time-Robotics-Dashboad
+A real-time web dashboard using Python, Flask, Socket.io, OpenCV, and jQuery.
 
 ![alt text](https://github.com/ddelago/Simple-Rover-Dashboard/blob/master/media/dashboard.PNG)
 
 ## Installing
 1. `git clone https://github.com/ddelago/Simple-Rover-Dashboard.git`
 2. `pip install -r requirements.txt`
+3. Also pip install `opencv-python` and `opencv-contrib-python`
 
 ## Running
 ### Starting the camera server
 1. `cd camera_server`
-2. `python webstreaming.py`
-3. The camera server can now be viewed at [http://localhost:6006](http://localhost:6006).
+2. Make sure you have a `CameraCalibration.pckl` file. 
+    - [See here on how to properly create one.](https://github.com/ddelago/Aruco-Marker-Calibration-and-Pose-Estimation)
+3. `python webstreaming.py`
+4. The camera server can now be viewed at [http://localhost:6006](http://localhost:6006).
     - Ensure that a webcam is connected and that the correct camera is being sourced (line 20).
 
 ### Starting the main server
