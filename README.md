@@ -1,7 +1,7 @@
 # Real-Time-Robotics-Dashboad
 A real-time web dashboard using Python, Flask, Socket.io, OpenCV, and jQuery.
 
-![alt text](https://github.com/ddelago/Simple-Rover-Dashboard/blob/master/media/dashboard.PNG)
+![alt text](https://github.com/ddelago/Simple-Rover-Dashboard/blob/master/docs/media/dashboard.PNG)
 
 ## Installing
 1. `git clone https://github.com/ddelago/Simple-Rover-Dashboard.git`
